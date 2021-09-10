@@ -10,11 +10,15 @@ namespace DavigeditPlus
     {
         public static void Prefix(Davigo.Davigedit.CannonControllerObject __instance)
         {
-            Type type_identifiableObject = typeof(Davigo.Davigedit.CannonControllerObject);
-            PropertyInfo prop = type_identifiableObject.GetProperty("Replacement");
-            IdentifiableObject replacement = (IdentifiableObject)prop.GetValue(__instance);
+            CannonSettings cannonSettings = __instance.gameObject.transform.parent.GetComponent<CannonSettings>();
+            if (cannonSettings != null)
+            {
+                Type type_identifiableObject = typeof(Davigo.Davigedit.CannonControllerObject);
+                PropertyInfo prop = type_identifiableObject.GetProperty("Replacement");
+                IdentifiableObject replacement = (IdentifiableObject)prop.GetValue(__instance);
 
-            __instance.gameObject.transform.parent.GetComponent<CannonEvents>().cannonObject = replacement.gameObject;
+                cannonSettings.cannonObject = replacement.gameObject;
+            }
         }
     }
 }
