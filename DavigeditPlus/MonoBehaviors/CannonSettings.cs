@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -22,6 +23,20 @@ namespace DavigeditPlus
         public GameObject cannonObject;
         [HideInInspector]
         public CannonController cannonController;
+        private Cannon[] cannonChildren;
+        // just gonna
+        private enum CannonStates
+        {
+            Idle,
+            Rising,
+            Tracking,
+            Firing,
+            Cooldown,
+            Lowering,
+            Reloading,
+            Grabbed,
+            Broken
+        }
 
         private void Start()
         {
@@ -33,11 +48,21 @@ namespace DavigeditPlus
                 cannonController.OnReloading += onReloading.Invoke;
                 cannonController.OnRising += onFiring.Invoke;
 
-                foreach (Cannon cannon in cannonObject.GetComponentsInChildren<Cannon>())
+                cannonChildren = cannonObject.GetComponentsInChildren<Cannon>();
+
+                foreach (Cannon cannon in cannonChildren)
                 {
                     FieldInfo field = cannon.GetType().GetField("reloadDuration", BindingFlags.NonPublic | BindingFlags.Instance);
                     field.SetValue(cannon, reloadDuration);
                 }
+            }
+        }
+
+        public void FireCannon()
+        {
+            if ((CannonStates)cannonController.stateMachine.currentState == CannonStates.Idle)
+            {
+                cannonController.Trigger();
             }
         }
     }
