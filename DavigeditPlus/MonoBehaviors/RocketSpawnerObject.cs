@@ -8,7 +8,7 @@ namespace DavigeditPlus
         public override void Process()
         {
             RocketSpawnerSettings rocketSpawnerSettings = gameObject.GetComponentInParent<RocketSpawnerSettings>();
-            if(rocketSpawnerSettings != null)
+            if (rocketSpawnerSettings != null)
             {
                 rocketSpawnerSettings.rocketSpawner = Replacement.gameObject.GetComponent<RocketSpawner>();
             }

@@ -8,7 +8,8 @@ namespace DavigeditPlus
     class CannonSettings : MonoBehaviour
     {
         [Header("Settings")]
-        [SerializeField] [Min(0)]
+        [SerializeField]
+        [Min(0)]
         public float reloadDuration = 15f;
 
         [Header("Events")]
@@ -24,23 +25,10 @@ namespace DavigeditPlus
         [HideInInspector]
         public CannonController cannonController;
         private Cannon[] cannonChildren;
-        // just gonna
-        private enum CannonStates
-        {
-            Idle,
-            Rising,
-            Tracking,
-            Firing,
-            Cooldown,
-            Lowering,
-            Reloading,
-            Grabbed,
-            Broken
-        }
 
         private void Start()
         {
-            if(cannonObject != null)
+            if (cannonObject != null)
             {
                 cannonController = cannonObject.GetComponent<CannonController>();
 
@@ -64,6 +52,20 @@ namespace DavigeditPlus
             {
                 cannonController.Trigger();
             }
+        }
+
+        // just gonna
+        private enum CannonStates
+        {
+            Idle,
+            Rising,
+            Tracking,
+            Firing,
+            Cooldown,
+            Lowering,
+            Reloading,
+            Grabbed,
+            Broken
         }
     }
 }

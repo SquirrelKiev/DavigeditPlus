@@ -13,7 +13,8 @@ namespace DavigeditPlus
         private UnityEvent onRespawn = new UnityEvent();
 
 
-        [SerializeField] [Min(0)]
+        [SerializeField]
+        [Min(0)]
         private float respawnTime = 10f;
 
         [HideInInspector]
@@ -22,7 +23,7 @@ namespace DavigeditPlus
         private void Start()
         {
             rocketSpawner.OnPickedUp += onPickedUp_Invoke;
-            FieldInfo field = typeof(RocketSpawner).GetField("respawnTime",BindingFlags.NonPublic | BindingFlags.Instance);
+            FieldInfo field = typeof(RocketSpawner).GetField("respawnTime", BindingFlags.NonPublic | BindingFlags.Instance);
             field.SetValue(rocketSpawner, respawnTime);
         }
 
