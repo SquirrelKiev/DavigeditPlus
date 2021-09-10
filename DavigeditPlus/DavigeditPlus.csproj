@@ -57,6 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MonoBehaviors\Breakable.cs" />
     <Compile Include="MonoBehaviors\CannonSettings.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="MonoBehaviors\RocketSpawnerObject.cs" />
