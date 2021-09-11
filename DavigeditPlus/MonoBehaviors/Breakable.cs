@@ -12,10 +12,8 @@ namespace DavigeditPlus
         [Tooltip("Based off the damage values for the giant. 0 means don't break. ")]
         private float health = 10;
         [SerializeField]
-        [Tooltip("If set to false, the object will not destroy itself. ")]
+        [Tooltip("If set to false, the object will not destroy itself on death. ")]
         private bool destroyOnDeath = true;
-        [SerializeField]
-        private DamageFilter damageFilter = DamageFilter.All;
 
         [Header("Events")]
         [SerializeField]
@@ -33,8 +31,7 @@ namespace DavigeditPlus
         [HideInInspector]
         public void TakeDamage(float amount, DamageType damageType, Vector3 point, Vector3 direction, Player owner, float giantDamage)
         {
-            if(CheckFilter(damageType))
-                DealDamage(giantDamage);
+            DealDamage(giantDamage);
         }
 
         public void ResetHealth()
@@ -68,17 +65,6 @@ namespace DavigeditPlus
             Concussive,
             Explosive,
             All
-        }
-
-        private bool CheckFilter(DamageType damageType)
-        {
-            if (damageFilter == DamageFilter.All)
-                return true;
-            else if (damageType == (DamageType)damageFilter)
-                return true;
-
-            // didnt pass check
-            return false;
         }
     }
 }
