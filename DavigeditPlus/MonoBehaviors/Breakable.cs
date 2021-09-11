@@ -48,7 +48,7 @@ namespace DavigeditPlus
             if(health >= 0)
             {
                 currentHealth -= damageAmount;
-                if(currentHealth < 0)
+                if(currentHealth <= 0)
                 {
                     Break();
                 }
