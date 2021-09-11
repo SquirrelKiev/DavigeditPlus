@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace DavigeditPlus.Filter
 {
-    class FilterBase : MonoBehaviour
+    class Filter : MonoBehaviour
     {
         [SerializeField]
         [Tooltip("Reverses the outcome. If filter passed, it fails, if it fails, it passes. Hope that makes sense :)")]

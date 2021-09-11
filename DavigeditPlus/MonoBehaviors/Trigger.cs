@@ -11,38 +11,46 @@ namespace DavigeditPlus
         [Tooltip("Amount of time, in seconds, after OnTrigger has triggered before it can be triggered again. If set to -1, it will never trigger again.")]
         private float delayBeforeReset = 1;
         [SerializeField]
+        private Filter.Filter filter;
+        [SerializeField]
         private UnityEvent onTrigger = new UnityEvent();
         [SerializeField]
         private UnityEvent onTriggerExit = new UnityEvent();
 
-        private bool canTrigger = true;
+        private bool canTriggerEnter = true;
+        private bool canTriggerExit = true;
 
         private void OnTriggerEnter(Collider other)
         {
-            if (canTrigger == true)
+            if (canTriggerEnter == true)
             {
+                MelonLoader.MelonLogger.Msg(other.gameObject.name);
                 onTrigger.Invoke();
-                if (delayBeforeReset <= -1)
+                if (delayBeforeReset < 0)
                 {
-                    canTrigger = false;
+                    canTriggerEnter = false;
                 }
                 else
                 {
-                    StartCoroutine(Delay(delayBeforeReset));
+                    canTriggerEnter = false;
+                    StartCoroutine(FixedLogic.InvokeFixed(delayBeforeReset, new System.Action(setCanTriggerEnter)));
                 }
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            onTriggerExit.Invoke();
+            if(canTriggerExit == true)
+            {
+                onTriggerExit.Invoke();
+                canTriggerExit = false;
+                StartCoroutine(FixedLogic.InvokeFixed(delayBeforeReset, new System.Action(setCanTriggerExit)));
+            }
         }
 
-        private IEnumerator Delay(float delay)
-        {
-            canTrigger = false;
-            yield return new WaitForSeconds(delay);
-            canTrigger = true;
-        }
+        private void setCanTriggerEnter()
+        { canTriggerEnter = true; }
+        private void setCanTriggerExit()
+        { canTriggerExit = true; }
     }
 }

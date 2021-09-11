@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DavigeditPlus.Filter
 {
-    class FilterCombine : FilterBase, IFilterBase
+    class FilterCombine : Filter, IFilterBase
     {
         [SerializeField]
         [Tooltip("Subfilters to test.")]

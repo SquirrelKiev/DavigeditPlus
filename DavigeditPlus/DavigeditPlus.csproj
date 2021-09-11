@@ -60,7 +60,7 @@
     <Compile Include="MonoBehaviors\Breakable.cs" />
     <Compile Include="MonoBehaviors\CannonSettings.cs" />
     <Compile Include="Main.cs" />
-    <Compile Include="MonoBehaviors\Filter\FilterBase.cs" />
+    <Compile Include="MonoBehaviors\Filter\Filter.cs" />
     <Compile Include="MonoBehaviors\Filter\FilterByComponent.cs" />
     <Compile Include="MonoBehaviors\Filter\FilterByObjectName.cs" />
     <Compile Include="MonoBehaviors\Filter\FilterByWarrior.cs" />

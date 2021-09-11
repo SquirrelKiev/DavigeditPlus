@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DavigeditPlus.Filter
 {
-    class FilterByWarrior : FilterBase, IFilterBase
+    class FilterByWarrior : Filter, IFilterBase
     {
 
         public bool CheckFilter(GameObject filterObject)

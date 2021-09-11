@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DavigeditPlus.Filter
 {
-    class FilterByObjectName : FilterBase, IFilterBase
+    class FilterByObjectName : Filter, IFilterBase
     {
         [SerializeField]
         [Tooltip("Filter will only pass if object entering is exactly this name.")]
