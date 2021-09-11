@@ -24,7 +24,8 @@ namespace DavigeditPlus
         public GameObject cannonObject;
         [HideInInspector]
         public CannonController cannonController;
-        private Cannon[] cannonChildren;
+        private Cannon cannon;
+        private PropertyInfo HasReloaded_PropInfo;
 
         private void Start()
         {
@@ -36,13 +37,12 @@ namespace DavigeditPlus
                 cannonController.OnReloading += onReloading.Invoke;
                 cannonController.OnRising += onFiring.Invoke;
 
-                cannonChildren = cannonObject.GetComponentsInChildren<Cannon>();
+                cannon = cannonController.Cannon;
 
-                foreach (Cannon cannon in cannonChildren)
-                {
-                    FieldInfo field = cannon.GetType().GetField("reloadDuration", BindingFlags.NonPublic | BindingFlags.Instance);
-                    field.SetValue(cannon, reloadDuration);
-                }
+                HasReloaded_PropInfo = cannon.GetType().GetProperty("HasReloaded");
+
+                FieldInfo field = cannon.GetType().GetField("reloadDuration", BindingFlags.NonPublic | BindingFlags.Instance);
+                field.SetValue(cannon, reloadDuration);
             }
         }
 
@@ -51,8 +51,16 @@ namespace DavigeditPlus
             if ((CannonStates)cannonController.stateMachine.currentState == CannonStates.Idle)
             {
                 cannonController.Trigger();
+                HasReloaded_PropInfo.SetValue(cannon, true);
             }
         }
+        public void ForceFireCannon()
+        {
+            HasReloaded_PropInfo.SetValue(cannon, true);
+            cannonController.Trigger();
+            HasReloaded_PropInfo.SetValue(cannon, true);
+        }
+
 
         // just gonna
         private enum CannonStates
