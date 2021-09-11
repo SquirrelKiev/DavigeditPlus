@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DavigeditPlus.Logic
 {
-    class LogicAuto : MonoBehaviour
+    class LogicGame : MonoBehaviour
     {
     }
 }
