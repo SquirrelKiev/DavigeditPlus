@@ -19,6 +19,7 @@ namespace DavigeditPlus
 
         [HideInInspector]
         public RocketSpawner rocketSpawner;
+        private Coroutine respawnTimer;
 
         private void Start()
         {
@@ -30,14 +31,20 @@ namespace DavigeditPlus
         private void onPickedUp_Invoke(GameObject gameObject)
         {
             onPickedUp.Invoke();
-            StartCoroutine(FixedLogic.InvokeFixed(respawnTime, new Action(onRespawn.Invoke)));
+            respawnTimer = StartCoroutine(FixedLogic.InvokeFixed(respawnTime, new Action(onRespawn.Invoke)));
         }
 
-        /*public void ForceSpawnRocket() // Hiding as respawn still runs
+        public void ForceSpawnRocket()
         {
-            MethodInfo method = typeof(RocketSpawner).GetMethod("Reload");
-            method.Invoke(rocketSpawner, new object[] { null });
-            StopCoroutine(respawnTimer);
-        }*/
+            FieldInfo loaded = typeof(RocketSpawner).GetField("loaded", BindingFlags.NonPublic | BindingFlags.Instance);
+            if (!(bool)loaded.GetValue(rocketSpawner))
+            {
+                MethodInfo method = typeof(RocketSpawner).GetMethod("Reload", BindingFlags.NonPublic | BindingFlags.Instance);
+                method.Invoke(rocketSpawner, null);
+                StopCoroutine(respawnTimer);
+                onRespawn.Invoke();
+                rocketSpawner.StopAllCoroutines();
+            }
+        }
     }
 }

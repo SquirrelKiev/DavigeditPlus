@@ -9,8 +9,8 @@ namespace DavigeditPlus
     {
         [Header("Settings")]
         [SerializeField]
-        [Tooltip("Health of the object. When the health of the object goes below this, it will call OnBreak and destroy itself. Based off the damage values for the giant.")]
-        private int health = 10;
+        [Tooltip("Based off the damage values for the giant. 0 means don't break. ")]
+        private float health = 10;
         [SerializeField]
         [Tooltip("If set to false, the object will not destroy itself. ")]
         private bool destroyOnDeath = true;
@@ -23,24 +23,29 @@ namespace DavigeditPlus
         [SerializeField]
         private UnityEvent onTakeDamage;
 
+        private float currentHealth;
+
+        private void Start()
+        {
+            currentHealth = health;
+        }
+
         [HideInInspector]
         public void TakeDamage(float amount, DamageType damageType, Vector3 point, Vector3 direction, Player owner, float giantDamage)
         {
-            MelonLoader.MelonLogger.Msg(amount.ToString() + damageType.ToString());
-            MelonLoader.MelonLogger.Msg(giantDamage.ToString());
         }
 
         public void ResetHealth()
         {
-
+            currentHealth = health;
         }
-        public void SetHealth(int health)
+        public void DealDamage(int damageAmount)
         {
 
         }
         public void Break()
         {
-
+            
         }
 
         private enum DamageFilter
