@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DavigeditPlus.Filter;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -24,6 +25,8 @@ namespace DavigeditPlus
         {
             if (canTriggerEnter == true)
             {
+                if (filter != null && !filter.GetComponent<IFilterBase>().CheckFilter(other.gameObject))
+                    return;
                 MelonLoader.MelonLogger.Msg(other.gameObject.name);
                 onTrigger.Invoke();
                 if (delayBeforeReset < 0)
@@ -33,7 +36,7 @@ namespace DavigeditPlus
                 else
                 {
                     canTriggerEnter = false;
-                    StartCoroutine(FixedLogic.InvokeFixed(delayBeforeReset, new System.Action(setCanTriggerEnter)));
+                    StartCoroutine(FixedLogic.InvokeFixed(delayBeforeReset, new System.Action(SetCanTriggerEnter)));
                 }
             }
         }
@@ -42,15 +45,17 @@ namespace DavigeditPlus
         {
             if(canTriggerExit == true)
             {
+                if (filter != null && !filter.GetComponent<IFilterBase>().CheckFilter(other.gameObject))
+                    return;
                 onTriggerExit.Invoke();
                 canTriggerExit = false;
-                StartCoroutine(FixedLogic.InvokeFixed(delayBeforeReset, new System.Action(setCanTriggerExit)));
+                StartCoroutine(FixedLogic.InvokeFixed(delayBeforeReset, new System.Action(SetCanTriggerExit)));
             }
         }
 
-        private void setCanTriggerEnter()
+        private void SetCanTriggerEnter()
         { canTriggerEnter = true; }
-        private void setCanTriggerExit()
+        private void SetCanTriggerExit()
         { canTriggerExit = true; }
     }
 }
