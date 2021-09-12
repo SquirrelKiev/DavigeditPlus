@@ -28,6 +28,7 @@ namespace DavigeditPlus
         private Cannon cannon;
         private PropertyInfo HasReloaded_PropInfo;
         private TriggerButton triggerButton;
+        private MethodInfo triggerButton_Press;
 
         private void Start()
         {
@@ -44,9 +45,10 @@ namespace DavigeditPlus
                 HasReloaded_PropInfo = cannon.GetType().GetProperty("HasReloaded");
 
                 triggerButton = (TriggerButton)cannonController.GetType().GetField("triggerButton", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(cannonController);
+                triggerButton_Press = triggerButton.GetType().GetMethod("Press", BindingFlags.NonPublic | BindingFlags.Instance);
 
-                FieldInfo field = cannon.GetType().GetField("reloadDuration", BindingFlags.NonPublic | BindingFlags.Instance);
-                field.SetValue(cannon, reloadDuration);
+                FieldInfo cannon_reloadDuration = cannon.GetType().GetField("reloadDuration", BindingFlags.NonPublic | BindingFlags.Instance);
+                cannon_reloadDuration.SetValue(cannon, reloadDuration);
             }
         }
 
@@ -60,7 +62,7 @@ namespace DavigeditPlus
         public void ForceFireCannon()
         {
             HasReloaded_PropInfo.SetValue(cannon, true);
-            cannonController.Trigger();
+            triggerButton_Press.Invoke(triggerButton, null);
         }
 
 
