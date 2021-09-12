@@ -29,18 +29,18 @@ namespace DavigeditPlus.Filter
 
             if (thing(filterObject, objectName))
             {
-                return true;
+                return !reverseOutcome;
             }
 
             if (searchChildren)
                 if (SearchChildren(filterObject, objectName))
-                    return true;
+                    return !reverseOutcome;
 
             if (searchParents)
                 if (SearchParents(filterObject, objectName))
-                    return true;
+                    return !reverseOutcome;
 
-            return false;
+            return reverseOutcome;
         }
 
 

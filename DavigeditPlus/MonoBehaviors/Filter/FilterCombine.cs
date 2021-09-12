@@ -30,9 +30,14 @@ namespace DavigeditPlus.Filter
             if (filterOperation == FilterOperation.AND)
             {
                 if (iFilter1.CheckFilter(filterObject) && iFilter2.CheckFilter(filterObject))
-                    return true;
+                    return !reverseOutcome;
             }
-            return false;
+            else if (filterOperation == FilterOperation.OR)
+            {
+                if (iFilter1.CheckFilter(filterObject) || iFilter2.CheckFilter(filterObject))
+                    return !reverseOutcome;
+            }
+            return reverseOutcome;
         }
     }
 
