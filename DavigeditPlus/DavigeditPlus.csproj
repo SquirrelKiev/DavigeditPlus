@@ -62,9 +62,9 @@
     <Compile Include="Main.cs" />
     <Compile Include="MonoBehaviors\Filter\Filter.cs" />
     <Compile Include="MonoBehaviors\Filter\FilterByComponent.cs" />
-    <Compile Include="MonoBehaviors\Filter\FilterByGiant.cs" />
+    <Compile Include="MonoBehaviors\Filter\LogicGiant.cs" />
     <Compile Include="MonoBehaviors\Filter\FilterByObjectName.cs" />
-    <Compile Include="MonoBehaviors\Filter\FilterByWarrior.cs" />
+    <Compile Include="MonoBehaviors\Filter\LogicWarrior.cs" />
     <Compile Include="MonoBehaviors\Filter\FilterCombine.cs" />
     <Compile Include="MonoBehaviors\Filter\IFilterBase.cs" />
     <Compile Include="MonoBehaviors\Logic\LogicGame.cs" />

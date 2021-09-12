@@ -1,29 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace DavigeditPlus.Filter
 {
-    class FilterByWarrior : Filter, IFilterBase
+    class LogicWarrior : Filter, IFilterBase
     {
         [Header("Settings")]
         [SerializeField]
         [Tooltip("Which players to target. Keep the array at 4!")]
         private bool[] allowedPlayers = new bool[4];
 
-        private GameController gameController;
+        [Header("Events")]
+        [SerializeField]
+        private UnityEvent onWarriorDeath = new UnityEvent();
+        [SerializeField]
+        private UnityEvent onRagdoll = new UnityEvent();
 
         private List<Player> players;
 
         private void Start()
         {
-            gameController = FindObjectOfType<GameController>();
-            players = gameController.Players;
+            players = SingletonBehaviour<GameController>.Instance.Players;
+
+            for (int i = 0; i < players.Count; i++)
+            {
+                if (allowedPlayers[i])
+                {
+                    players[i].OnDeath += LogicWarrior_OnDeath;
+                    players[i].OnRagdoll += onRagdoll.Invoke;
+                }
+            }
+        }
+
+        private void LogicWarrior_OnDeath(Player obj) { onWarriorDeath.Invoke(); }
+
+        public void KillWarrior()
+        {
+            for (int i = 0; i < players.Count; i++)
+            {
+                if (allowedPlayers[i])
+                {
+                    players[i].Kill();
+                }
+            }
+        }
+
+        public void HurtWarrior()
+        {
+            for (int i = 0; i < players.Count; i++)
+            {
+                if (allowedPlayers[i])
+                {
+                    SingletonBehaviour<GameController>.Instance.PlayerOutOfBounds(players[i]);
+                }
+            }
         }
 
         public bool CheckFilter(GameObject filterObject)
         {
-            for (int i = 0; i < gameController.Players.Count; i++)
+            for (int i = 0; i < players.Count; i++)
             {
                 if (allowedPlayers[i] && players[i].transform.root.gameObject == filterObject.transform.root.gameObject)
                 {
