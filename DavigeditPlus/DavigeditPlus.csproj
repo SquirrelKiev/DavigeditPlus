@@ -66,7 +66,7 @@
     <Compile Include="MonoBehaviors\Filter\FilterByWarrior.cs" />
     <Compile Include="MonoBehaviors\Filter\FilterCombine.cs" />
     <Compile Include="MonoBehaviors\Filter\IFilterBase.cs" />
-    <Compile Include="MonoBehaviors\Logic\LogicAuto.cs" />
+    <Compile Include="MonoBehaviors\Logic\LogicGame.cs" />
     <Compile Include="MonoBehaviors\Logic\LogicCounter.cs" />
     <Compile Include="MonoBehaviors\Logic\LogicRelay.cs" />
     <Compile Include="MonoBehaviors\Logic\LogicTimer.cs" />
