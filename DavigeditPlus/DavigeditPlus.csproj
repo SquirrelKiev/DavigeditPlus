@@ -62,7 +62,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="MonoBehaviors\Filter\Filter.cs" />
     <Compile Include="MonoBehaviors\Filter\FilterByComponent.cs" />
-    <Compile Include="MonoBehaviors\Filter\FilterByHand.cs" />
+    <Compile Include="MonoBehaviors\Filter\FilterByGiant.cs" />
     <Compile Include="MonoBehaviors\Filter\FilterByObjectName.cs" />
     <Compile Include="MonoBehaviors\Filter\FilterByWarrior.cs" />
     <Compile Include="MonoBehaviors\Filter\FilterCombine.cs" />
@@ -76,6 +76,7 @@
     <Compile Include="PatchClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MonoBehaviors\Trigger.cs" />
+    <Compile Include="Utility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

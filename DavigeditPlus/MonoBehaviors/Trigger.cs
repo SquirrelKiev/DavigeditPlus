@@ -27,13 +27,9 @@ namespace DavigeditPlus
             {
                 if (filter != null && !filter.GetComponent<IFilterBase>().CheckFilter(other.gameObject))
                     return;
-                MelonLoader.MelonLogger.Msg(other.gameObject.name);
                 onTrigger.Invoke();
-                if (delayBeforeReset < 0)
-                {
-                    canTriggerEnter = false;
-                }
-                else
+                canTriggerEnter = false;
+                if (delayBeforeReset > 0)
                 {
                     canTriggerEnter = false;
                     StartCoroutine(FixedLogic.InvokeFixed(delayBeforeReset, new System.Action(SetCanTriggerEnter)));
