@@ -1,5 +1,4 @@
 ﻿using System;
-using MelonLoader;
 using HarmonyLib;
 using System.Reflection;
 
