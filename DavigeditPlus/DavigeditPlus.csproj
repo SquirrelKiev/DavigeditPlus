@@ -62,6 +62,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="MonoBehaviors\Filter\Filter.cs" />
     <Compile Include="MonoBehaviors\Filter\FilterByComponent.cs" />
+    <Compile Include="MonoBehaviors\Filter\FilterByHand.cs" />
     <Compile Include="MonoBehaviors\Filter\FilterByObjectName.cs" />
     <Compile Include="MonoBehaviors\Filter\FilterByWarrior.cs" />
     <Compile Include="MonoBehaviors\Filter\FilterCombine.cs" />
