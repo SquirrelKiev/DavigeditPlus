@@ -23,21 +23,31 @@ namespace DavigeditPlus.Filter
         public bool CheckFilter(GameObject filterObject)
         {
             if (filterObject.GetComponent(componentClass) != null)
+            {
+                onPass.Invoke();
                 return !reverseOutcome;
+            }
 
             bool passed = false;
             if(searchChildren)
                 passed = SearchChildren(filterObject);
 
             if (passed)
+            {
+                onPass.Invoke();
                 return !reverseOutcome;
+            }
 
             if (searchParents)
                 passed = SearchParents(filterObject);
 
             if (passed)
+            {
+                onPass.Invoke();
                 return !reverseOutcome;
+            }
 
+            onFail.Invoke();
             return reverseOutcome;
         }
 

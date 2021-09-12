@@ -18,7 +18,6 @@ namespace DavigeditPlus.Filter
 
         private ReturnTheThing thing;
 
-        // could prob use delegates here, but im lazy
         public bool CheckFilter(GameObject filterObject)
         {
             if (searchType == SearchType.containsMatch)
@@ -29,16 +28,23 @@ namespace DavigeditPlus.Filter
 
             if (thing(filterObject, objectName))
             {
+                onPass.Invoke();
                 return !reverseOutcome;
             }
 
             if (searchChildren)
                 if (SearchChildren(filterObject, objectName))
+                {
+                    onPass.Invoke();
                     return !reverseOutcome;
+                }
 
             if (searchParents)
                 if (SearchParents(filterObject, objectName))
+                {
+                    onPass.Invoke();
                     return !reverseOutcome;
+                }
 
             return reverseOutcome;
         }

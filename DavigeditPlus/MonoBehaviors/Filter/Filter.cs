@@ -11,9 +11,9 @@ namespace DavigeditPlus.Filter
         public bool reverseOutcome = false;
 
         [SerializeField]
-        private UnityEvent onPass = new UnityEvent();
+        public UnityEvent onPass = new UnityEvent();
 
         [SerializeField]
-        private UnityEvent onFail = new UnityEvent();
+        public UnityEvent onFail = new UnityEvent();
     }
 }
