@@ -14,7 +14,36 @@ namespace DavigeditPlus.Filter
 
         public bool CheckFilter(GameObject filterObject)
         {
-            return true;
+            bool passed = false;
+
+            if (filterOperation == FilterOperation.AND)
+            {
+                passed = true;
+                foreach (Filter filter in filters)
+                {
+                    if (!filter.GetComponent<IFilterBase>().CheckFilter(filterObject))
+                    {
+                        passed = false;
+                    }
+                }
+            }
+
+            else if (filterOperation == FilterOperation.OR)
+            {
+                passed = false;
+                foreach (Filter filter in filters)
+                {
+                    if (filter.GetComponent<IFilterBase>().CheckFilter(filterObject))
+                    {
+                        passed = true;
+                    }
+                }
+            }
+
+            if (reverseOutcome == true)
+                return !passed;
+            else
+                return passed;
         }
     }
 
