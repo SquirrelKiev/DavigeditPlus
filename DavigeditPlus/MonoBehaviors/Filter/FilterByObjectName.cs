@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace DavigeditPlus.Filter
 {
+    // delegate my beloved
+    delegate bool ReturnTheThing(GameObject filterObject, string name);
+
     class FilterByObjectName : Filter, IFilterBase
     {
         [SerializeField]
@@ -13,83 +16,62 @@ namespace DavigeditPlus.Filter
         [SerializeField]
         private bool searchParents, searchChildren = false;
 
+        private ReturnTheThing thing;
+
         // could prob use delegates here, but im lazy
         public bool CheckFilter(GameObject filterObject)
         {
             if (searchType == SearchType.containsMatch)
+                thing = IfContains;
+            else if (searchType == SearchType.exactMatch)
+                thing = IfExact;
+
+
+            if (thing(filterObject, objectName))
             {
-                if (filterObject.name.Contains(objectName))
-                {
-                    return true;
-                }
-
-                if (searchChildren)
-                    if(SearchChildren_Contains(filterObject, objectName))
-                        return true;
-
-                if (searchParents)
-                    if(SearchParents_Contains(filterObject, objectName))
-                        return true;
+                return true;
             }
-            else if(searchType == SearchType.exactMatch)
-            {
-                if (filterObject.name == objectName)
+
+            if (searchChildren)
+                if (SearchChildren(filterObject, objectName))
                     return true;
 
-                if(searchChildren)
-                    if(SearchChildren_Exactly(filterObject, objectName))
-                        return true;
+            if (searchParents)
+                if (SearchParents(filterObject, objectName))
+                    return true;
 
-                if (searchParents)
-                    if (SearchParents_Exactly(filterObject, objectName))
-                        return true;
-            }
             return false;
         }
 
-        private bool SearchChildren_Exactly(GameObject filterObject, string objectName)
+
+
+        private bool SearchChildren(GameObject gameObject, string name)
         {
             foreach (Transform child in gameObject.transform)
             {
-                if (child.name == name)
+                if (thing(gameObject, name))
                     return true;
             }
             return false;
         }
 
-        private bool SearchParents_Exactly(GameObject filterObject, string objectName)
+        private bool SearchParents(GameObject gameObject, string name)
         {
             Transform currentParent = gameObject.transform.parent;
             while (currentParent != null)
             {
-                if (currentParent.gameObject.name == objectName)
+                if (thing(gameObject, name))
                     return true;
                 currentParent = currentParent.parent;
             }
             return false;
         }
 
-        private bool SearchChildren_Contains(GameObject gameObject, string name)
-        {
-            foreach(Transform child in gameObject.transform)
-            {
-                if (child.name.Contains(name))
-                    return true;
-            }
-            return false;
-        }
+        private bool IfExact(GameObject filterObject, string objectName)
+        { return filterObject.name == objectName; }
 
-        private bool SearchParents_Contains(GameObject gameObject, string name)
-        {
-            Transform currentParent = gameObject.transform.parent;
-            while (currentParent != null)
-            {
-                if(currentParent.gameObject.name.Contains(name))
-                    return true;
-                currentParent = currentParent.parent;
-            }
-            return false;
-        }
+        private bool IfContains(GameObject filterObject, string objectName)
+        { return filterObject.name.Contains(objectName); }
     }
     enum SearchType
     {

@@ -8,7 +8,7 @@ namespace DavigeditPlus.Filter
     {
         [SerializeField]
         [Tooltip("Reverses the outcome. If filter passed, it fails, if it fails, it passes. Hope that makes sense :)")]
-        private bool reverseOutcome = false;
+        public bool reverseOutcome = false;
 
         [SerializeField]
         private UnityEvent onPass = new UnityEvent();

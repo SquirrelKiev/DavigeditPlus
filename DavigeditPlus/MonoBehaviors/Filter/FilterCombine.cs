@@ -10,7 +10,7 @@ namespace DavigeditPlus.Filter
         private IFilterBase[] filters;
         [SerializeField]
         [Tooltip("AND: All subfilters must pass. OR: any subfilter must pass.")]
-        private FilterOperation filterOperation;
+        private FilterOperation filterOperation = FilterOperation.AND;
 
         public bool CheckFilter(GameObject filterObject)
         {
