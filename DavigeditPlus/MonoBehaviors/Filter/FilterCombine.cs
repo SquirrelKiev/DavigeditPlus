@@ -7,7 +7,7 @@ namespace DavigeditPlus.Filter
     {
         [SerializeField]
         [Tooltip("Subfilters to test.")]
-        private IFilterBase[] filters;
+        private Filter[] filters;
         [SerializeField]
         [Tooltip("AND: All subfilters must pass. OR: any subfilter must pass.")]
         private FilterOperation filterOperation = FilterOperation.AND;
