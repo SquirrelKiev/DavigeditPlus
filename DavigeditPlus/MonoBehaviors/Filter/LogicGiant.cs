@@ -2,7 +2,7 @@
 
 namespace DavigeditPlus.Filter
 {
-    class FilterByGiant : Filter, IFilterBase
+    class LogicGiant : Filter, IFilterBase
     {
         [SerializeField]
         private bool leftHand = true;

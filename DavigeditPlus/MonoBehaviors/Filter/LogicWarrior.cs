@@ -6,8 +6,9 @@ namespace DavigeditPlus.Filter
 {
     class FilterByWarrior : Filter, IFilterBase
     {
+        [Header("Settings")]
         [SerializeField]
-        [Tooltip("Which players will allow the Filter to pass. e.g. if I ticked Element 0, and none others, only the red warrior would trigger. Keep the array at 4!")]
+        [Tooltip("Which players to target. Keep the array at 4!")]
         private bool[] allowedPlayers = new bool[4];
 
         private GameController gameController;
