@@ -21,22 +21,103 @@ namespace DavigeditPlus.Logic
         private UnityEvent onReachedMin = new UnityEvent();
         [SerializeField]
         private UnityEvent onReachedMax = new UnityEvent();
+
+        // until it likes me, this is staying commented
+        /*
         [SerializeField]
         private Case[] cases;
+        */
+
+        private float currentValue;
+
+        private Action AC_onValueChanged;
+        private Action AC_onReachedMin;
+        private Action AC_onReachedMax;
 
         private void Start()
         {
+            currentValue = initialValue;
 
+            AC_onValueChanged += onValueChanged.Invoke;
+            AC_onReachedMin += onReachedMin.Invoke;
+            AC_onReachedMax += onReachedMax.Invoke;
+
+            // until it likes me, this is staying commented
+            /*
+            foreach (Case _case in cases)
+            {
+                Case theCase = _case;
+
+                AC_onValueChanged += theCase.CheckOnCase;
+            }
+            */
+        }
+
+        public void SetCounter(float value)
+        {
+            currentValue = value;
+            AC_onValueChanged.Invoke();
+            ValidateValue();
+        }
+
+        public void Add(float value)
+        {
+            currentValue += value;
+            AC_onValueChanged.Invoke();
+            ValidateValue();
+        }
+
+        public void Subtract(float value)
+        {
+            currentValue -= value;
+            AC_onValueChanged.Invoke();
+            ValidateValue();
+        }
+
+        public void Divide(float value)
+        {
+            currentValue /= value;
+            AC_onValueChanged.Invoke();
+            ValidateValue();
+        }
+
+        public void Multiply(float value)
+        {
+            currentValue *= value;
+            AC_onValueChanged.Invoke();
+            ValidateValue();
+        }
+
+        public void resetToInitialValue()
+        {
+            currentValue = initialValue;
+            AC_onValueChanged.Invoke();
+            ValidateValue();
+        }
+
+        private void ValidateValue()
+        {
+            if(currentValue < min)
+            {
+                currentValue = min;
+                AC_onReachedMin.Invoke();
+            }
+
+            if(currentValue > max)
+            {
+                currentValue = max;
+                AC_onReachedMax.Invoke();
+            }
         }
 
         private void OnValidate()
         {
-            if(initialValue < min)
+            if (initialValue < min)
             {
                 Debug.LogWarning("initalValue is smaller than min! Clamping!");
                 initialValue = min;
             }
-            else if(initialValue > max)
+            else if (initialValue > max)
             {
                 Debug.LogWarning("initalValue is larger than max! Clamping!");
                 initialValue = max;
@@ -51,5 +132,13 @@ namespace DavigeditPlus.Logic
         public float possibleCase = 0;
         [SerializeField]
         public UnityEvent onCase = new UnityEvent();
+
+        public void CheckOnCase(float value)
+        {
+            if(value == possibleCase)
+            {
+                onCase.Invoke();
+            }
+        }
     }
 }
