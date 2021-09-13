@@ -20,6 +20,7 @@ namespace DavigeditPlus.Filter
 
         public bool CheckFilter(GameObject filterObject)
         {
+            // the magic of delegate
             if (searchType == SearchType.containsMatch)
                 thing = IfContains;
             else if (searchType == SearchType.exactMatch)

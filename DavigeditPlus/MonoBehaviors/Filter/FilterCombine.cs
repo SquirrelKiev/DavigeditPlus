@@ -27,6 +27,7 @@ namespace DavigeditPlus.Filter
 
         public bool CheckFilter(GameObject filterObject)
         {
+            // was originally using arrays of filters but that was less readable and didnt work iirc
             if (filterOperation == FilterOperation.AND)
             {
                 if (iFilter1.CheckFilter(filterObject) && iFilter2.CheckFilter(filterObject))

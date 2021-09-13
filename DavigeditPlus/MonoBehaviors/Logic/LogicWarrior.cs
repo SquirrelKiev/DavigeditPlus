@@ -73,21 +73,7 @@ namespace DavigeditPlus.Logic
                 {
                     Player player = players[i];
 
-                    // TODO: Figure out how to properly ragdoll, and disable input
-                    player.ActivateRagdoll(player.GetComponent<SimpleCharacterController>().velocity, null);
-                }
-            }
-        }
-        
-        public void UnragdollWarrior()
-        {
-            for (int i = 0; i < players.Count; i++)
-            {
-                if (allowedPlayers[i])
-                {
-                    Player player = players[i];
-
-                    player.DeactivateRagdoll();
+                    player.GetComponentInParent<PlayerPhysicsController>().EnterRagdollState(player.Velocity);
                 }
             }
         }

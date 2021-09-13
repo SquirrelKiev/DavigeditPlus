@@ -22,7 +22,6 @@ namespace DavigeditPlus.Logic
                 return reverseOutcome;
             }
 
-            // could do this whole thing with && and or but this is more readable
             if (
                 (hierarchy[1].name == "HandLeft" && leftHand)   ||
                 (hierarchy[1].name == "HandRight" && rightHand) ||

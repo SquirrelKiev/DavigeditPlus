@@ -15,6 +15,8 @@ namespace DavigeditPlus.Filter
         private void Start()
         {
             componentClass = Type.GetType(componentClassName);
+
+            // wouldnt detect davigo components otherwise
             if(componentClass == null)
                 componentClass = Type.GetType($"{componentClassName}, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
             MelonLoader.MelonLogger.Msg(componentClass);

@@ -42,6 +42,7 @@ namespace DavigeditPlus
 
                 cannon = cannonController.Cannon;
 
+                // reflection yay
                 HasReloaded_PropInfo = cannon.GetType().GetProperty("HasReloaded");
 
                 triggerButton = (TriggerButton)cannonController.GetType().GetField("triggerButton", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(cannonController);
@@ -62,9 +63,9 @@ namespace DavigeditPlus
         public void ForceFireCannon()
         {
             HasReloaded_PropInfo.SetValue(cannon, true);
+            // was firing the cannon directly but that caused problems when the warrior pressed the button
             triggerButton_Press.Invoke(triggerButton, null);
         }
-
 
         // just gonna
         private enum CannonStates

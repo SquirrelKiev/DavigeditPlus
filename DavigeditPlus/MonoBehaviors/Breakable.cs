@@ -38,6 +38,8 @@ namespace DavigeditPlus
         {
             currentHealth = health;
         }
+
+        // can be accessed in the inspector too! neat!
         public void DealDamage(float damageAmount)
         {
             onTakeDamage.Invoke();
