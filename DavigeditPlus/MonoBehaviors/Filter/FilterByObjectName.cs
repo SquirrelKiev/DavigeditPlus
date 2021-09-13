@@ -6,7 +6,7 @@ namespace DavigeditPlus.Filter
     // delegate my beloved
     delegate bool ReturnTheThing(GameObject filterObject, string name);
 
-    class FilterByObjectName : Filter, IFilterBase
+    class FilterByObjectName : Filter
     {
         [SerializeField]
         private string objectName;
@@ -18,7 +18,7 @@ namespace DavigeditPlus.Filter
 
         private ReturnTheThing thing;
 
-        public bool CheckFilter(GameObject filterObject)
+        public override bool CheckFilter(GameObject filterObject)
         {
             // the magic of delegate
             if (searchType == SearchType.containsMatch)

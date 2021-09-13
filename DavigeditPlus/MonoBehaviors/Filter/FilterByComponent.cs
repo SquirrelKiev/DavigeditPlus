@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DavigeditPlus.Filter
 {
-    class FilterByComponent : Filter, IFilterBase
+    class FilterByComponent : Filter
     {
         [SerializeField]
         private string componentClassName;
@@ -22,7 +22,7 @@ namespace DavigeditPlus.Filter
             MelonLoader.MelonLogger.Msg(componentClass);
         }
 
-        public bool CheckFilter(GameObject filterObject)
+        public override bool CheckFilter(GameObject filterObject)
         {
             if (filterObject.GetComponent(componentClass) != null)
             {

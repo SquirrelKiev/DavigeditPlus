@@ -25,7 +25,7 @@ namespace DavigeditPlus
         {
             if (canTriggerEnter == true)
             {
-                if (filter != null && !filter.GetComponent<IFilterBase>().CheckFilter(other.gameObject))
+                if (filter != null && !filter.CheckFilter(other.gameObject))
                     return;
                 onTrigger.Invoke();
                 canTriggerEnter = false;
@@ -41,7 +41,7 @@ namespace DavigeditPlus
         {
             if(canTriggerExit == true)
             {
-                if (filter != null && !filter.GetComponent<IFilterBase>().CheckFilter(other.gameObject))
+                if (filter != null && !filter.CheckFilter(other.gameObject))
                     return;
                 onTriggerExit.Invoke();
                 canTriggerExit = false;

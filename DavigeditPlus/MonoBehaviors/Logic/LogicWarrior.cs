@@ -6,7 +6,7 @@ using DavigeditPlus.Filter;
 
 namespace DavigeditPlus.Logic
 {
-    class LogicWarrior : Filter.Filter, IFilterBase
+    class LogicWarrior : Filter.Filter
     {
         [Header("Settings")]
         [SerializeField]
@@ -51,7 +51,7 @@ namespace DavigeditPlus.Logic
             }
         }
 
-        public void HurtWarrior()
+        public void HurtWarrior(float damageToDeal)
         {
             for (int i = 0; i < players.Count; i++)
             {
@@ -59,8 +59,8 @@ namespace DavigeditPlus.Logic
                 {
                     Player player = players[i];
 
-                    // PlayerHealth health = player.GetComponentInParent<PlayerHealth>();
-                    SingletonBehaviour<GameController>.Instance.PlayerOutOfBounds(player);
+                    PlayerHealth health = player.GetComponentInChildren<PlayerHealth>();
+                    health.TakeDamage(damageToDeal, true);
                 }
             }
         }
@@ -78,7 +78,7 @@ namespace DavigeditPlus.Logic
             }
         }
 
-        public bool CheckFilter(GameObject filterObject)
+        public override bool CheckFilter(GameObject filterObject)
         {
             for (int i = 0; i < players.Count; i++)
             {

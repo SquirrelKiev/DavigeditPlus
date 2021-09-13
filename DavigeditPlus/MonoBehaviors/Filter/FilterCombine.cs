@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DavigeditPlus.Filter
 {
-    class FilterCombine : Filter, IFilterBase
+    class FilterCombine : Filter
     {
         [SerializeField]
         [Tooltip("AND: All subfilters must pass. OR: any subfilter must pass.")]
@@ -16,21 +16,13 @@ namespace DavigeditPlus.Filter
         [SerializeField]
         private Filter filter2;
 
-        private IFilterBase iFilter1;
-        private IFilterBase iFilter2;
 
-        private void Start()
-        {
-            iFilter1 = filter1.GetComponent<IFilterBase>();
-            iFilter2 = filter2.GetComponent<IFilterBase>();
-        }
-
-        public bool CheckFilter(GameObject filterObject)
+        public override bool CheckFilter(GameObject filterObject)
         {
             // was originally using arrays of filters but that was less readable and didnt work iirc
             if (filterOperation == FilterOperation.AND)
             {
-                if (iFilter1.CheckFilter(filterObject) && iFilter2.CheckFilter(filterObject))
+                if (filter1.CheckFilter(filterObject) && filter2.CheckFilter(filterObject))
                 {
                     onPass.Invoke();
                     return !reverseOutcome;
@@ -38,7 +30,7 @@ namespace DavigeditPlus.Filter
             }
             else if (filterOperation == FilterOperation.OR)
             {
-                if (iFilter1.CheckFilter(filterObject) || iFilter2.CheckFilter(filterObject))
+                if (filter1.CheckFilter(filterObject) || filter2.CheckFilter(filterObject))
                 {
                     onPass.Invoke();
                     return !reverseOutcome;

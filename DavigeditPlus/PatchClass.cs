@@ -11,7 +11,7 @@ namespace DavigeditPlus
         {
             if (__instance.gameObject.transform.parent != null)
             {
-                CannonSettings cannonSettings = __instance.gameObject.transform.parent.GetComponent<CannonSettings>();
+                CannonSettings cannonSettings = __instance.gameObject.GetComponentInParent<CannonSettings>();
                 if (cannonSettings != null)
                 {
                     Type type_identifiableObject = typeof(Davigo.Davigedit.CannonControllerObject);

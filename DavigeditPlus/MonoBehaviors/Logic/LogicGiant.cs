@@ -3,7 +3,7 @@ using DavigeditPlus.Filter;
 
 namespace DavigeditPlus.Logic
 {
-    class LogicGiant : Filter.Filter, IFilterBase
+    class LogicGiant : Filter.Filter
     {
         [SerializeField]
         private bool leftHand = true;
@@ -12,7 +12,7 @@ namespace DavigeditPlus.Logic
         [SerializeField]
         private bool head = true;
 
-        public bool CheckFilter(GameObject filterObject)
+        public override bool CheckFilter(GameObject filterObject)
         {
             GameObject[] hierarchy = Utility.GetHierarchy(filterObject);
 

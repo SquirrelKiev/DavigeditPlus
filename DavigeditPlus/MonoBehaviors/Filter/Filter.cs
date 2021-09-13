@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace DavigeditPlus.Filter
 {
-    class Filter : MonoBehaviour
+    abstract class Filter : MonoBehaviour
     {
         [Header("Filter")]
         [SerializeField]
@@ -16,5 +16,7 @@ namespace DavigeditPlus.Filter
 
         [SerializeField]
         public UnityEvent onFail = new UnityEvent();
+
+        public abstract bool CheckFilter(GameObject filterObject);
     }
 }
