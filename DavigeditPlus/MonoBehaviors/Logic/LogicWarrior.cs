@@ -11,7 +11,7 @@ namespace DavigeditPlus.Logic
         [Header("Settings")]
         [SerializeField]
         [Tooltip("Which players to target. Keep the array at 4!")]
-        private bool[] allowedPlayers = new bool[4];
+        private bool[] allowedPlayers = new bool[4] { true, true, true, true };
 
         [Header("Events")]
         [SerializeField]
