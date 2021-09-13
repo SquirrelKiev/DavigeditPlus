@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using DavigeditPlus.Filter;
 
-namespace DavigeditPlus.Filter
+namespace DavigeditPlus.Logic
 {
-    class LogicWarrior : Filter, IFilterBase
+    class LogicWarrior : Filter.Filter, IFilterBase
     {
         [Header("Settings")]
         [SerializeField]

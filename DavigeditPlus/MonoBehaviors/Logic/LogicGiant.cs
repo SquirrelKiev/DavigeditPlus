@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using DavigeditPlus.Filter;
 
-namespace DavigeditPlus.Filter
+namespace DavigeditPlus.Logic
 {
-    class LogicGiant : Filter, IFilterBase
+    class LogicGiant : Filter.Filter, IFilterBase
     {
         [SerializeField]
         private bool leftHand = true;
