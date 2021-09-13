@@ -7,15 +7,17 @@ namespace DavigeditPlus
 {
     class RocketSpawnerSettings : MonoBehaviour
     {
+        [Header("Settings")]
+        [SerializeField]
+        [Min(0)]
+        private float respawnTime = 10f;
+
+        [Header("Events")]
         [SerializeField]
         private UnityEvent onPickedUp = new UnityEvent();
         [SerializeField]
         private UnityEvent onRespawn = new UnityEvent();
 
-
-        [SerializeField]
-        [Min(0)]
-        private float respawnTime = 10f;
 
         [HideInInspector]
         public RocketSpawner rocketSpawner;
