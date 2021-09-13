@@ -28,8 +28,10 @@ namespace DavigeditPlus.Filter
             {
                 if (allowedPlayers[i])
                 {
-                    players[i].OnDeath += LogicWarrior_OnDeath;
-                    players[i].OnRagdoll += onRagdoll.Invoke;
+                    Player player = players[i];
+
+                    player.OnDeath += LogicWarrior_OnDeath;
+                    player.OnRagdoll += onRagdoll.Invoke;
                 }
             }
         }
@@ -42,7 +44,8 @@ namespace DavigeditPlus.Filter
             {
                 if (allowedPlayers[i])
                 {
-                    players[i].Kill();
+                    Player player = players[i];
+                    player.Kill();
                 }
             }
         }
@@ -53,7 +56,37 @@ namespace DavigeditPlus.Filter
             {
                 if (allowedPlayers[i])
                 {
-                    SingletonBehaviour<GameController>.Instance.PlayerOutOfBounds(players[i]);
+                    Player player = players[i];
+
+                    // PlayerHealth health = player.GetComponentInParent<PlayerHealth>();
+                    SingletonBehaviour<GameController>.Instance.PlayerOutOfBounds(player);
+                }
+            }
+        }
+
+        public void RagdollWarrior()
+        {
+            for (int i = 0; i < players.Count; i++)
+            {
+                if (allowedPlayers[i])
+                {
+                    Player player = players[i];
+
+                    // TODO: Figure out how to properly ragdoll, and disable input
+                    player.ActivateRagdoll(player.GetComponent<SimpleCharacterController>().velocity, null);
+                }
+            }
+        }
+        
+        public void UnragdollWarrior()
+        {
+            for (int i = 0; i < players.Count; i++)
+            {
+                if (allowedPlayers[i])
+                {
+                    Player player = players[i];
+
+                    player.DeactivateRagdoll();
                 }
             }
         }
