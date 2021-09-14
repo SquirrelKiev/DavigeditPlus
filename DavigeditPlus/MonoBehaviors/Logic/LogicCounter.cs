@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace DavigeditPlus.Logic
 {
-    class LogicCounter : MonoBehaviour
+    public class LogicCounter : MonoBehaviour
     {
         [Header("Settings")]
         [SerializeField]
@@ -23,7 +23,10 @@ namespace DavigeditPlus.Logic
         private UnityEvent onReachedMax = new UnityEvent();
 
         [SerializeField]
-        private Case[] cases = new Case[2] { new Case(), new Case ()};
+        private Case[] cases;
+
+        [SerializeField]
+        private Case testCase = new Case();
 
         private float currentValue;
 
@@ -44,6 +47,8 @@ namespace DavigeditPlus.Logic
 
         private void OnValueChanged()
         {
+            MelonLoader.MelonLogger.Msg(testCase.possibleCase.ToString());
+
             // Array.ForEach(cases, (Case theCase) => MelonLoader.MelonLogger.Msg(theCase.possibleCase.ToString()));
         }
 
@@ -91,13 +96,13 @@ namespace DavigeditPlus.Logic
 
         private void ValidateValue()
         {
-            if(currentValue < min)
+            if (currentValue < min)
             {
                 currentValue = min;
                 AC_onReachedMin.Invoke();
             }
 
-            if(currentValue > max)
+            if (currentValue > max)
             {
                 currentValue = max;
                 AC_onReachedMax.Invoke();
@@ -115,23 +120,6 @@ namespace DavigeditPlus.Logic
             {
                 Debug.LogWarning("initalValue is larger than max! Clamping!");
                 initialValue = max;
-            }
-        }
-    }
-
-    [Serializable]
-    public class Case
-    {
-        [SerializeField]
-        public float possibleCase = 0;
-        [SerializeField]
-        public UnityEvent onCase = new UnityEvent();
-
-        public void CheckOnCase(float value)
-        {
-            if(Mathf.Approximately(possibleCase, value))
-            {
-                onCase.Invoke();
             }
         }
     }
