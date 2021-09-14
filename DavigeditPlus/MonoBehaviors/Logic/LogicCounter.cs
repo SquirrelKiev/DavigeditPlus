@@ -25,22 +25,11 @@ namespace DavigeditPlus.Logic
         [SerializeField]
         private Case[] cases;
 
-        [SerializeField]
-        private string[] casesJson;
-
-        [SerializeField, HideInInspector]
-        private float[] cases_possibleCases;
-
         private float currentValue;
 
         private Action AC_onValueChanged;
         private Action AC_onReachedMin;
         private Action AC_onReachedMax;
-
-        private void Awake()
-        {
-            DeserializeCases();
-        }
 
         private void Start()
         {
@@ -126,30 +115,6 @@ namespace DavigeditPlus.Logic
             {
                 Debug.LogWarning("initalValue is larger than max! Clamping!");
                 initialValue = max;
-            }
-
-            SerializeCases();
-        }
-
-        // unity i hate you atm gonna be real
-        private void SerializeCases()
-        {
-            casesJson = new string[cases.Length];
-
-            for (int i = 0; i < cases.Length; i++)
-            {
-                casesJson[i] = JsonUtility.ToJson(cases[i]);
-            }
-        }
-
-        private void DeserializeCases()
-        {
-            cases = new Case[casesJson.Length];
-
-            for (int i = 0; i < casesJson.Length; i++)
-            {
-                cases[i] = JsonUtility.FromJson<Case>(casesJson[i]);
-                MelonLoader.MelonLogger.Msg(cases[i].possibleCase);
             }
         }
     }
