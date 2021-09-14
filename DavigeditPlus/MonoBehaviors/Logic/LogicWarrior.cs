@@ -31,13 +31,11 @@ namespace DavigeditPlus.Logic
                 {
                     Player player = players[i];
 
-                    player.OnDeath += LogicWarrior_OnDeath;
+                    player.OnDeath += (Player j) => onWarriorDeath.Invoke();
                     player.OnRagdoll += onRagdoll.Invoke;
                 }
             }
         }
-
-        private void LogicWarrior_OnDeath(Player obj) { onWarriorDeath.Invoke(); }
 
         public void KillWarrior()
         {

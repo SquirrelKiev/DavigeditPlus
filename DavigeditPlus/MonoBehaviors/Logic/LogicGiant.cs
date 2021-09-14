@@ -52,7 +52,7 @@ namespace DavigeditPlus.Logic
 
         public void DealDamageToGiant(float damage)
         {
-            headDamageable.TakeDamage(damage, DamageType.Explosive, Vector3.zero, Vector3.zero, null, damage);
+            headDamageable.TakeDamage(damage, DamageType.Explosive, Vector3.zero, Vector3.forward, null, damage);
         }
 
         public void KillGiant()

@@ -22,11 +22,8 @@ namespace DavigeditPlus.Logic
         [SerializeField]
         private UnityEvent onReachedMax = new UnityEvent();
 
-        // until it likes me, this is staying commented
-        /*
         [SerializeField]
-        private Case[] cases;
-        */
+        private Case[] cases = new Case[2] { new Case(), new Case ()};
 
         private float currentValue;
 
@@ -38,19 +35,16 @@ namespace DavigeditPlus.Logic
         {
             currentValue = initialValue;
 
+            AC_onValueChanged += OnValueChanged;
+
             AC_onValueChanged += onValueChanged.Invoke;
             AC_onReachedMin += onReachedMin.Invoke;
             AC_onReachedMax += onReachedMax.Invoke;
+        }
 
-            // until it likes me, this is staying commented
-            /*
-            foreach (Case _case in cases)
-            {
-                Case theCase = _case;
-
-                AC_onValueChanged += theCase.CheckOnCase;
-            }
-            */
+        private void OnValueChanged()
+        {
+            // Array.ForEach(cases, (Case theCase) => MelonLoader.MelonLogger.Msg(theCase.possibleCase.ToString()));
         }
 
         public void SetCounter(float value)
@@ -126,7 +120,7 @@ namespace DavigeditPlus.Logic
     }
 
     [Serializable]
-    class Case
+    public class Case
     {
         [SerializeField]
         public float possibleCase = 0;
@@ -135,7 +129,7 @@ namespace DavigeditPlus.Logic
 
         public void CheckOnCase(float value)
         {
-            if(value == possibleCase)
+            if(Mathf.Approximately(possibleCase, value))
             {
                 onCase.Invoke();
             }
