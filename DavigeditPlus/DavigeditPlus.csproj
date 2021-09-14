@@ -52,6 +52,10 @@
       <HintPath>..\..\..\..\..\AppData\Local\DiscordGames\Davigo Alpha - 828491273227993130\content\Davigo_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>..\..\..\..\..\AppData\Local\DiscordGames\Davigo Alpha - 828491273227993130\content\Davigo_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
       <HintPath>..\..\..\..\..\AppData\Local\DiscordGames\Davigo Alpha - 828491273227993130\content\Davigo_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
       <Private>False</Private>

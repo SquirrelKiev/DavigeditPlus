@@ -26,13 +26,21 @@ namespace DavigeditPlus.Logic
         private Case[] cases;
 
         [SerializeField]
-        private Case testCase = new Case();
+        private string[] casesJson;
+
+        [SerializeField, HideInInspector]
+        private float[] cases_possibleCases;
 
         private float currentValue;
 
         private Action AC_onValueChanged;
         private Action AC_onReachedMin;
         private Action AC_onReachedMax;
+
+        private void Awake()
+        {
+            DeserializeCases();
+        }
 
         private void Start()
         {
@@ -47,8 +55,6 @@ namespace DavigeditPlus.Logic
 
         private void OnValueChanged()
         {
-            MelonLoader.MelonLogger.Msg(testCase.possibleCase.ToString());
-
             // Array.ForEach(cases, (Case theCase) => MelonLoader.MelonLogger.Msg(theCase.possibleCase.ToString()));
         }
 
@@ -96,13 +102,13 @@ namespace DavigeditPlus.Logic
 
         private void ValidateValue()
         {
-            if (currentValue < min)
+            if(currentValue < min)
             {
                 currentValue = min;
                 AC_onReachedMin.Invoke();
             }
 
-            if (currentValue > max)
+            if(currentValue > max)
             {
                 currentValue = max;
                 AC_onReachedMax.Invoke();
@@ -120,6 +126,30 @@ namespace DavigeditPlus.Logic
             {
                 Debug.LogWarning("initalValue is larger than max! Clamping!");
                 initialValue = max;
+            }
+
+            SerializeCases();
+        }
+
+        // unity i hate you atm gonna be real
+        private void SerializeCases()
+        {
+            casesJson = new string[cases.Length];
+
+            for (int i = 0; i < cases.Length; i++)
+            {
+                casesJson[i] = JsonUtility.ToJson(cases[i]);
+            }
+        }
+
+        private void DeserializeCases()
+        {
+            cases = new Case[casesJson.Length];
+
+            for (int i = 0; i < casesJson.Length; i++)
+            {
+                cases[i] = JsonUtility.FromJson<Case>(casesJson[i]);
+                MelonLoader.MelonLogger.Msg(cases[i].possibleCase);
             }
         }
     }
