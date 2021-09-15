@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -157,6 +158,17 @@ namespace DavigeditPlus.Logic
         public void resetToInitialValue()
         {
             currentValue = initialValue;
+            AC_onValueChanged.Invoke();
+            ValidateValue();
+        }
+
+        public void setToGiantHP()
+        {
+            GiantHealth giantHealth = Utility.GetHierarchy(SingletonBehaviour<GameController>.Instance.Giant.gameObject)[0].GetComponentInChildren<GiantHealth>();
+            FieldInfo field = typeof(GiantHealth).GetField("health", BindingFlags.Instance | BindingFlags.NonPublic);
+            Health health = (Health)field.GetValue(giantHealth);
+            currentValue = health.Current * (SingletonBehaviour<GameController>.Instance.GameOptions.GiantHealth);
+            MelonLoader.MelonLogger.Msg(currentValue);
             AC_onValueChanged.Invoke();
             ValidateValue();
         }
