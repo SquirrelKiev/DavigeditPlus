@@ -25,10 +25,56 @@ namespace DavigeditPlus.Logic
         // i cant get unity to like my class no matter how hard i try, so im just gonna do this. sorry UX, but this is getting tiring
         [Header("Cases")]
 
+        #region
         [SerializeField]
-        private float[] casesPossibleCase;
+        private float possibleCase1;
         [SerializeField]
-        private UnityEvent[] casesOnCase;
+        private UnityEvent onCase1 = new UnityEvent();
+        [SerializeField]
+        private float possibleCase2;
+        [SerializeField]
+        private UnityEvent onCase2 = new UnityEvent();
+        [SerializeField]
+        private float possibleCase3;
+        [SerializeField]
+        private UnityEvent onCase3 = new UnityEvent();
+        [SerializeField]
+        private float possibleCase4;
+        [SerializeField]
+        private UnityEvent onCase4 = new UnityEvent();
+        [SerializeField]
+        private float possibleCase5;
+        [SerializeField]
+        private UnityEvent onCase5 = new UnityEvent();
+        [SerializeField]
+        private float possibleCase6;
+        [SerializeField]
+        private UnityEvent onCase6 = new UnityEvent();
+        [SerializeField]
+        private float possibleCase7;
+        [SerializeField]
+        private UnityEvent onCase7 = new UnityEvent();
+        [SerializeField]
+        private float possibleCase8;
+        [SerializeField]
+        private UnityEvent onCase8 = new UnityEvent();
+        [SerializeField]
+        private float possibleCase9;
+        [SerializeField]
+        private UnityEvent onCase9 = new UnityEvent();
+        [SerializeField]
+        private float possibleCase10;
+        [SerializeField]
+        private UnityEvent onCase10 = new UnityEvent();
+        [SerializeField]
+        private float possibleCase11;
+        [SerializeField]
+        private UnityEvent onCase11 = new UnityEvent();
+        [SerializeField]
+        private float possibleCase12;
+        [SerializeField]
+        private UnityEvent onCase12 = new UnityEvent();
+        #endregion
 
         private float currentValue;
 
@@ -41,15 +87,36 @@ namespace DavigeditPlus.Logic
             currentValue = initialValue;
 
             AC_onValueChanged += OnValueChanged;
+            OnValueChanged();
 
             AC_onValueChanged += onValueChanged.Invoke;
             AC_onReachedMin += onReachedMin.Invoke;
             AC_onReachedMax += onReachedMax.Invoke;
         }
 
+        // garbage code that i dont have an alternative for, im going to vomit
         private void OnValueChanged()
         {
-            // Array.ForEach(cases, (Case theCase) => MelonLoader.MelonLogger.Msg(theCase.possibleCase.ToString()));
+            Garbage(ref possibleCase1, ref onCase1);
+            Garbage(ref possibleCase2, ref onCase2);
+            Garbage(ref possibleCase3, ref onCase3);
+            Garbage(ref possibleCase4, ref onCase4);
+            Garbage(ref possibleCase5, ref onCase5);
+            Garbage(ref possibleCase6, ref onCase6);
+            Garbage(ref possibleCase7, ref onCase7);
+            Garbage(ref possibleCase8, ref onCase8);
+            Garbage(ref possibleCase9, ref onCase9);
+            Garbage(ref possibleCase10, ref onCase10);
+            Garbage(ref possibleCase11, ref onCase11);
+            Garbage(ref possibleCase12, ref onCase12);
+        }
+
+        private void Garbage(ref float possibleCase, ref UnityEvent onCase)
+        {
+            if(possibleCase == currentValue)
+            {
+                onCase.Invoke();
+            }
         }
 
         public void SetCounter(float value)
@@ -121,9 +188,6 @@ namespace DavigeditPlus.Logic
                 Debug.LogWarning("initalValue is larger than max! Clamping!");
                 initialValue = max;
             }
-
-            casesOnCase = new UnityEvent[casesPossibleCase.Length];
-            casesPossibleCase = new float[casesOnCase.Length];
         }
     }
 }
