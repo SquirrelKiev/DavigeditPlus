@@ -22,8 +22,13 @@ namespace DavigeditPlus.Logic
         [SerializeField]
         private UnityEvent onReachedMax = new UnityEvent();
 
+        // i cant get unity to like my class no matter how hard i try, so im just gonna do this. sorry UX, but this is getting tiring
+        [Header("Cases")]
+
         [SerializeField]
-        private Case[] cases;
+        private float[] casesPossibleCase;
+        [SerializeField]
+        private UnityEvent[] casesOnCase;
 
         private float currentValue;
 
@@ -116,6 +121,9 @@ namespace DavigeditPlus.Logic
                 Debug.LogWarning("initalValue is larger than max! Clamping!");
                 initialValue = max;
             }
+
+            casesOnCase = new UnityEvent[casesPossibleCase.Length];
+            casesPossibleCase = new float[casesOnCase.Length];
         }
     }
 }
