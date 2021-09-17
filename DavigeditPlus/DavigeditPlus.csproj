@@ -57,7 +57,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>$(localappdata)\AppData\Local\DiscordGames\Davigo Alpha - 828491273227993130\content\Davigo_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>$(localappdata)\DiscordGames\Davigo Alpha - 828491273227993130\content\Davigo_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
