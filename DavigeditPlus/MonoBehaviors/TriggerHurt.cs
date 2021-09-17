@@ -59,21 +59,25 @@ namespace DavigeditPlus
                 switch (damageableType)
                 {
                     case DamageableType.GiantHead:
+                        hierarchy[1].GetComponent<Damageable>().TakeDamage(damageToDeal, DamageType.Explosive, Vector3.forward, Vector3.forward, null, damageToDeal);
                         break;
                     case DamageableType.GiantHands:
                         GiantHand giantHand = hierarchy[1].GetComponent<GiantHand>();
-                        MethodInfo method = giantHand.GetType().GetMethod("Death", BindingFlags.NonPublic | BindingFlags.Instance);
 
+                        MethodInfo method = giantHand.GetType().GetMethod("Death", BindingFlags.NonPublic | BindingFlags.Instance);
                         method.Invoke(giantHand, null);
                         onHurt.Invoke();
+
                         break;
                     case DamageableType.Warrior:
                         other.gameObject.transform.root.GetComponentInChildren<PlayerHealth>().TakeDamage(damageToDeal * SingletonBehaviour<GameController>.Instance.GameOptions.WarriorOutOfBoundsDamage, true);
                         onHurt.Invoke();
+
                         break;
                     case DamageableType.IDamageable:
                         other.gameObject.GetComponent<IDamageable>().TakeDamage(damageToDeal, DamageType.Explosive, Vector3.forward, Vector3.forward, null);
                         onHurt.Invoke();
+
                         break;
                 }
 
