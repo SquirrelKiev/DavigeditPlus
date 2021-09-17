@@ -37,6 +37,7 @@ namespace DavigeditPlus
                 switch (damageableType)
                 {
                     case DamageableType.Warrior:
+                        // so we get all the dummy rigidbodies
                         foreach (Transform item in other.gameObject.transform.parent.GetComponentsInChildren<Transform>())
                         {
                             notAllowedObjects.Add(item.gameObject);
@@ -46,7 +47,8 @@ namespace DavigeditPlus
                         break;
 
                     case DamageableType.GiantHands:
-                        foreach (Transform item in other.gameObject.transform.root.GetComponentsInChildren<Transform>())
+                        // theres alotta hand parts
+                        foreach (Transform item in hierarchy[1].GetComponentsInChildren<Transform>())
                         {
                             notAllowedObjects.Add(item.gameObject);
                             StartCoroutine(FixedLogic.InvokeFixed(timeBetweenDamage, new Action(() => { if (item != null) notAllowedObjects.Remove(item.gameObject); })));
