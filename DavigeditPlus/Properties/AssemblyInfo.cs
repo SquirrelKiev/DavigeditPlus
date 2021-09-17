@@ -8,6 +8,7 @@ using MelonLoader;
 // associated with an assembly.
 [assembly: MelonInfo(typeof(DavigeditPlus.Main), "Davigedit+", "1.0.0", "SquirrelKiev")]
 [assembly: MelonGame("Davico", "Davigo")]
+[assembly: MelonColor(System.ConsoleColor.DarkYellow)]
 
 [assembly: AssemblyTitle("DavigeditPlus")]
 [assembly: AssemblyDescription("")]
