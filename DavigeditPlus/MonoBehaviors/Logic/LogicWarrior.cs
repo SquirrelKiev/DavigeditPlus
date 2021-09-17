@@ -49,6 +49,18 @@ namespace DavigeditPlus.Logic
             }
         }
 
+        public void TeleportWarriors(GameObject location)
+        {
+            for (int i = 0; i < players.Count; i++)
+            {
+                if(allowedPlayers[i])
+                {
+                    Player player = players[i];
+                    player.ResetPosition(location.transform.position);
+                }
+            }
+        }
+
         public void HurtWarrior(float damageToDeal)
         {
             for (int i = 0; i < players.Count; i++)
