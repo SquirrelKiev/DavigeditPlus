@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\..\AppData\Local\DiscordGames\Davigo Alpha - 828491273227993130\content\Mods\</OutputPath>
+    <OutputPath>$(localappdata)\DiscordGames\Davigo Alpha - 828491273227993130\content\Mods\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,11 +33,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\..\AppData\Local\DiscordGames\Davigo Alpha - 828491273227993130\content\Davigo_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>$(localappdata)\DiscordGames\Davigo Alpha - 828491273227993130\content\Davigo_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="MelonLoader">
-      <HintPath>..\..\..\..\..\AppData\Local\DiscordGames\Davigo Alpha - 828491273227993130\content\MelonLoader\MelonLoader.dll</HintPath>
+      <HintPath>$(localappdata)\DiscordGames\Davigo Alpha - 828491273227993130\content\MelonLoader\MelonLoader.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
