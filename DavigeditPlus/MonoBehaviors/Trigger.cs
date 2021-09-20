@@ -42,7 +42,7 @@ namespace DavigeditPlus
 
         private void OnTriggerExit(Collider other)
         {
-            if(canTriggerExit == true)
+            if (canTriggerExit == true)
             {
                 if (filter != null && !filter.CheckFilter(other.gameObject))
                     return;
