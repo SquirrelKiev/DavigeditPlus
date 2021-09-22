@@ -55,8 +55,8 @@ namespace DavigeditPlus
                 }
 
                 SceneManager.LoadScene("MenuClosedAlpha");
-        */
             }
         }
+        */
     }
 }
