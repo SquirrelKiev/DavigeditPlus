@@ -42,7 +42,9 @@ namespace DavigeditPlus.Logic
         // Would have a Vector3 one too but UnityEvent doesnt like it
         public void TeleportGiant(GameObject location)
         {
-            FindObjectOfType<SetStartPosition>().Set(location.transform.position, location.transform.rotation);
+            FieldInfo startPos = typeof(SetStartPosition).GetField("startPosition", BindingFlags.NonPublic | BindingFlags.Instance);
+            startPos.SetValue(FindObjectOfType<SetStartPosition>(), location.transform);
+            FindObjectOfType<SetStartPosition>().Set();
         }
 
         public void RespawnGiant()
