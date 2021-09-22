@@ -68,6 +68,7 @@
     <Compile Include="MonoBehaviors\Filter\Filter.cs" />
     <Compile Include="MonoBehaviors\Filter\FilterByComponent.cs" />
     <Compile Include="MonoBehaviors\InstantiateObject.cs" />
+    <Compile Include="MonoBehaviors\Logic\LogicAuto.cs" />
     <Compile Include="MonoBehaviors\Logic\LogicGiant.cs" />
     <Compile Include="MonoBehaviors\Filter\FilterByObjectName.cs" />
     <Compile Include="MonoBehaviors\Logic\LogicWarrior.cs" />
