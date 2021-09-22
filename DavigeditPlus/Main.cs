@@ -8,8 +8,6 @@ namespace DavigeditPlus
 {
     public class Main : MelonMod
     {
-        bool firstLoad = true;
-        bool firstMegalophobia = true;
 
         public override void OnApplicationStart()
         {
@@ -17,7 +15,11 @@ namespace DavigeditPlus
         }
 
         /*
-         * requires alot of work
+         * requires alot of work, on hold for a bit
+
+        bool firstLoad = true;
+        bool firstMegalophobia = true;
+
         // Funky hack to get flamethrower
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
