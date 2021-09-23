@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MonoBehaviors\Logic\Case.cs" />
     <Compile Include="MonoBehaviors\Breakable.cs" />
     <Compile Include="MonoBehaviors\CannonSettings.cs" />
     <Compile Include="Main.cs" />
@@ -87,6 +88,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(localappdata)\DiscordGames\Davigo Alpha - 828491273227993130\content\Mods\DavigeditPlus.dll" "C:\Users\Ethan Ginns-Farrow\Documents\Davigo\DavigeditPlus\Davigolf\Assets\DavigeditPlus\DavigeditPlus.dll" /F /Y</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(localappdata)\DiscordGames\Davigo Alpha - 828491273227993130\content\Mods\DavigeditPlus.dll" "C:\Users\Ethan Ginns-Farrow\Documents\Davigo\DavigeditPlus\Davigolf\Assets\DavigeditPlus\Scripts\DavigeditPlus.dll" /F /Y</PostBuildEvent>
   </PropertyGroup>
 </Project>
