@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DavigeditPlus.Filter
 {
-    class FilterByComponent : Filter
+    public class FilterByComponent : Filter
     {
         [SerializeField]
         private string componentClassName;

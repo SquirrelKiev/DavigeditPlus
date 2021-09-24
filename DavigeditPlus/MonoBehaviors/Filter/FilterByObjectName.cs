@@ -4,10 +4,11 @@ using UnityEngine;
 namespace DavigeditPlus.Filter
 {
     // delegate my beloved
-    delegate bool ReturnTheThing(GameObject filterObject, string name);
 
-    class FilterByObjectName : Filter
+    public class FilterByObjectName : Filter
     {
+        private delegate bool ReturnTheThing(GameObject filterObject, string name);
+
         [SerializeField]
         private string objectName;
         [SerializeField]

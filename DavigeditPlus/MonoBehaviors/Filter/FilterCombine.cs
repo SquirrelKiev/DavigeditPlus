@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DavigeditPlus.Filter
 {
-    class FilterCombine : Filter
+    public class FilterCombine : Filter
     {
         [SerializeField]
         [Tooltip("AND: All subfilters must pass. OR: any subfilter must pass.")]

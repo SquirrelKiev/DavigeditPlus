@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace DavigeditPlus.Filter
 {
-    abstract class Filter : MonoBehaviour
+    public abstract class Filter : MonoBehaviour
     {
         [Header("Filter")]
         [SerializeField]
