@@ -2,6 +2,7 @@
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 namespace DavigeditPlus.Logic
 {
@@ -33,9 +34,7 @@ namespace DavigeditPlus.Logic
         {
             currentValue = initialValue;
 
-            onValueChanged.AddListener(onValueChanged.Invoke);
-            onReachedMin.AddListener(onReachedMin.Invoke);
-            onReachedMax.AddListener(onReachedMax.Invoke);
+            onValueChanged.AddListener(OnValueChanged);
         }
 
         private void OnValueChanged()
@@ -49,43 +48,43 @@ namespace DavigeditPlus.Logic
         public void SetCounter(float value)
         {
             currentValue = value;
-            onValueChanged.Invoke();
             ValidateValue();
+            onValueChanged.Invoke();
         }
 
         public void Add(float value)
         {
             currentValue += value;
-            onValueChanged.Invoke();
             ValidateValue();
+            onValueChanged.Invoke();
         }
 
         public void Subtract(float value)
         {
             currentValue -= value;
-            onValueChanged.Invoke();
             ValidateValue();
+            onValueChanged.Invoke();
         }
 
         public void Divide(float value)
         {
             currentValue /= value;
-            onValueChanged.Invoke();
             ValidateValue();
+            onValueChanged.Invoke();
         }
 
         public void Multiply(float value)
         {
             currentValue *= value;
-            onValueChanged.Invoke();
             ValidateValue();
+            onValueChanged.Invoke();
         }
 
         public void resetToInitialValue()
         {
             currentValue = initialValue;
-            onValueChanged.Invoke();
             ValidateValue();
+            onValueChanged.Invoke();
         }
 
         public void setToGiantHP()
@@ -94,9 +93,13 @@ namespace DavigeditPlus.Logic
             FieldInfo field = typeof(GiantHealth).GetField("health", BindingFlags.Instance | BindingFlags.NonPublic);
             Health health = (Health)field.GetValue(giantHealth);
             currentValue = health.Current * (SingletonBehaviour<GameController>.Instance.GameOptions.GiantHealth);
-            MelonLoader.MelonLogger.Msg(currentValue);
-            onValueChanged.Invoke();
             ValidateValue();
+            onValueChanged.Invoke();
+        }
+
+        public void SetTextToCounter(TextMeshPro text)
+        {
+            text.text = currentValue.ToString();
         }
 
         private void ValidateValue()
