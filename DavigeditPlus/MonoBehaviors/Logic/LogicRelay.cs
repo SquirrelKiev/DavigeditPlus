@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace DavigeditPlus.Logic
 {
-    class LogicRelay : MonoBehaviour
+    public class LogicRelay : MonoBehaviour
     {
         [Header("Settings")]
         [SerializeField]
@@ -22,6 +22,12 @@ namespace DavigeditPlus.Logic
                 if (onlyTriggerOnce) triggered = false;
                 onTrigger.Invoke();
             }
+        }
+
+
+        void OnDrawGizmos()
+        {
+            Gizmos.DrawIcon(transform.position, "DavigeditPlus/Logic/Logic_relay.png", true);
         }
     }
 }

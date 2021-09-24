@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace DavigeditPlus.Logic
 {
-    class LogicTimer : MonoBehaviour
+    public class LogicTimer : MonoBehaviour
     {
         [Header("Settings")]
         [SerializeField, Tooltip("Max time before repeating, in seconds. ")]
@@ -80,6 +80,12 @@ namespace DavigeditPlus.Logic
                 ResetTimer();
             }
             yield break;
+        }
+
+
+        void OnDrawGizmos()
+        {
+            Gizmos.DrawIcon(transform.position, "DavigeditPlus/Logic/Logic_timer.png", true);
         }
     }
 }

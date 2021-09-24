@@ -130,5 +130,11 @@ namespace DavigeditPlus.Logic
                 initialValue = max;
             }
         }
+
+
+        void OnDrawGizmos()
+        {
+            Gizmos.DrawIcon(transform.position, "DavigeditPlus/Logic/Logic_counter.png", true);
+        }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace DavigeditPlus
 {
-    class TriggerHurt : MonoBehaviour
+    public class TriggerHurt : MonoBehaviour
     {
         [Header("Settings")]
         [SerializeField]

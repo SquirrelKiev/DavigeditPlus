@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace DavigeditPlus.Logic
 {
-    class LogicGame : MonoBehaviour
+    public class LogicGame : MonoBehaviour
     {
         [Header("Events")]
         [SerializeField]

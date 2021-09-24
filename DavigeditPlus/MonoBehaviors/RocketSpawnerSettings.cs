@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace DavigeditPlus
 {
-    class RocketSpawnerSettings : MonoBehaviour
+    public class RocketSpawnerSettings : MonoBehaviour
     {
         [Header("Settings")]
         [SerializeField]

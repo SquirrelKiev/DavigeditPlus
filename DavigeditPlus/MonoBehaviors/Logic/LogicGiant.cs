@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace DavigeditPlus.Logic
 {
-    class LogicGiant : Filter.Filter
+    public class LogicGiant : Filter.Filter
     {
         [Header("Settings")]
         [SerializeField]

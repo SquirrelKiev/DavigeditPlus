@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace DavigeditPlus
 {
-    class CannonSettings : MonoBehaviour
+    public class CannonSettings : MonoBehaviour
     {
         [Header("Settings")]
         [SerializeField]

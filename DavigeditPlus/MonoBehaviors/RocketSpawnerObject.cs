@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DavigeditPlus
 {
-    class RocketSpawnerObject : DavigeditObject
+    public class RocketSpawnerObject : DavigeditObject
     {
         public override void Process()
         {

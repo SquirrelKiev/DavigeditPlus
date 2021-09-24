@@ -5,7 +5,7 @@ using UnityEngine.Events;
 namespace DavigeditPlus
 {
     [RequireComponent(typeof(Rigidbody))]
-    class Breakable : MonoBehaviour, IDamageable
+     public class Breakable : MonoBehaviour, IDamageable
     {
         [Header("Settings")]
         [SerializeField]

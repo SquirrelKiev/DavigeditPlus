@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace DavigeditPlus
 {
-    class InstantiateObject : MonoBehaviour
+    public class InstantiateObject : MonoBehaviour
     {
         [Header("Settings")]
         [SerializeField]

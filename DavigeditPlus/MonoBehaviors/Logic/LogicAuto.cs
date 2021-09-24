@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace DavigeditPlus
 {
-    class LogicAuto : MonoBehaviour
+    public class LogicAuto : MonoBehaviour
     {
         [Header("Events")]
         [SerializeField]
@@ -12,6 +12,11 @@ namespace DavigeditPlus
         private void OnEnable()
         {
             onEnable.Invoke();
+        }
+
+        void OnDrawGizmos()
+        {
+            Gizmos.DrawIcon(transform.position, "DavigeditPlus/Logic/Logic_auto.png", true);
         }
     }
 }
