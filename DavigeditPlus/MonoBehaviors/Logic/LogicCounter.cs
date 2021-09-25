@@ -25,17 +25,12 @@ namespace DavigeditPlus.Logic
         [SerializeField]
         private UnityEvent onReachedMax = new UnityEvent();
 
-
-        private List<Case> cases;
+        public List<Case> cases = new List<Case>();
 
         private float currentValue;
 
         private void Start()
         {
-            foreach(Case _case in GetComponentsInChildren<Case>())
-            {
-                cases.Add(_case);
-            }
             currentValue = initialValue;
 
             onValueChanged.AddListener(OnValueChanged);
