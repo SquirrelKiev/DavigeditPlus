@@ -3,6 +3,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using System.Collections.Generic;
 
 namespace DavigeditPlus.Logic
 {
@@ -24,14 +25,17 @@ namespace DavigeditPlus.Logic
         [SerializeField]
         private UnityEvent onReachedMax = new UnityEvent();
 
-        [Header("Cases")]
-        [SerializeField]
-        private Case[] cases;
+
+        private List<Case> cases;
 
         private float currentValue;
 
         private void Start()
         {
+            foreach(Case _case in GetComponentsInChildren<Case>())
+            {
+                cases.Add(_case);
+            }
             currentValue = initialValue;
 
             onValueChanged.AddListener(OnValueChanged);
