@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace DavigeditPlus
+namespace DavigeditPlus.Logic
 {
     public class LogicAuto : MonoBehaviour
     {
