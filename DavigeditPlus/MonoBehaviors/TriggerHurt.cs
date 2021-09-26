@@ -32,6 +32,8 @@ namespace DavigeditPlus
                 GameObject[] hierarchy = Utility.GetHierarchy(other.gameObject);
                 DamageableType damageableType = GetDamageableType(other.gameObject);
 
+                MelonLoader.MelonLogger.Msg(damageableType);
+
                 // custom list add requirements
                 switch (damageableType)
                 {
@@ -61,6 +63,7 @@ namespace DavigeditPlus
                 {
                     case DamageableType.GiantHead:
                         hierarchy[1].GetComponent<Damageable>().TakeDamage(damageToDeal, DamageType.Explosive, Vector3.forward, Vector3.forward, null, damageToDeal);
+                        onHurt.Invoke();
                         break;
                     case DamageableType.GiantHands:
                         GiantHand giantHand = hierarchy[1].GetComponent<GiantHand>();
@@ -85,7 +88,6 @@ namespace DavigeditPlus
                 if (damageableType != DamageableType.Warrior || damageableType != DamageableType.GiantHands)
                 {
                     notAllowedObjects.Add(other.gameObject);
-                    onHurt.Invoke();
                     StartCoroutine(FixedLogic.InvokeFixed(timeBetweenDamage, new Action(() => { if (other != null) notAllowedObjects.Remove(other.gameObject); })));
                 }
             }
@@ -95,7 +97,7 @@ namespace DavigeditPlus
         {
             GameObject[] hierarchy = Utility.GetHierarchy(gameObject);
 
-            if (hierarchy[0].GetComponent<Player>() != null)
+            if (gameObject.GetComponentInParent<Player>() != null)
             {
                 return DamageableType.Warrior;
             }

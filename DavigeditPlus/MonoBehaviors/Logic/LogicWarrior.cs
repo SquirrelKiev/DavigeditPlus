@@ -91,7 +91,7 @@ namespace DavigeditPlus.Logic
         {
             for (int i = 0; i < players.Count; i++)
             {
-                if (allowedPlayers[i] && players[i].transform.root.gameObject == filterObject.transform.root.gameObject)
+                if (allowedPlayers[i] && players[i] == filterObject.GetComponentInParent<Player>())
                 {
                     onPass.Invoke();
                     return !reverseOutcome;
