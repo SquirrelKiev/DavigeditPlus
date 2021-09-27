@@ -32,8 +32,6 @@ namespace DavigeditPlus
                 GameObject[] hierarchy = Utility.GetHierarchy(other.gameObject);
                 DamageableType damageableType = GetDamageableType(other.gameObject);
 
-                MelonLoader.MelonLogger.Msg(damageableType);
-
                 // custom list add requirements
                 switch (damageableType)
                 {
@@ -75,6 +73,7 @@ namespace DavigeditPlus
                         break;
                     case DamageableType.Warrior:
                         other.gameObject.transform.root.GetComponentInChildren<PlayerHealth>().TakeDamage(damageToDeal * SingletonBehaviour<GameController>.Instance.GameOptions.WarriorOutOfBoundsDamage, true);
+                        MelonLoader.MelonLogger.Msg("Damaged!");
                         onHurt.Invoke();
 
                         break;

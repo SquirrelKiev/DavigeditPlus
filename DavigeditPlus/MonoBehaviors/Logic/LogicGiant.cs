@@ -82,7 +82,8 @@ namespace DavigeditPlus.Logic
                 return !reverseOutcome;
             }
 
-            return false;
+            return reverseOutcome;
+
         }
 
         private void Giant_OnTakeHeadDamage(Damage obj)
