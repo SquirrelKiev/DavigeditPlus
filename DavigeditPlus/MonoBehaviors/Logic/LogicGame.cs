@@ -36,5 +36,10 @@ namespace DavigeditPlus.Logic
             PropertyInfo property = typeof(GameState).GetProperty("GameOutcome");
             property.SetValue(gameController.State, GameState.Outcome.Tie);
         }
+
+        void OnDrawGizmos()
+        {
+            Gizmos.DrawIcon(transform.position, "DavigeditPlus/Logic/Logic_game.png", true);
+        }
     }
 }

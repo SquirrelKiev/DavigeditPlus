@@ -121,5 +121,10 @@ namespace DavigeditPlus.Logic
                 Array.Resize(ref allowedPlayers, 4);
             }
         }
+
+        void OnDrawGizmos()
+        {
+            Gizmos.DrawIcon(transform.position, "DavigeditPlus/Logic/Logic_warrior.png", true);
+        }
     }
 }
