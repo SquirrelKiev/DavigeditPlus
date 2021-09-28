@@ -6,7 +6,7 @@ namespace DavigeditPlus.Logic
 {
     public class LogicGiant : Filter.Filter
     {
-        [Header("Settings")]
+        [Header("Settings (for filter)")]
         [SerializeField]
         private bool leftHand = true;
         [SerializeField]
