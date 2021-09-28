@@ -36,15 +36,5 @@ namespace DavigeditPlus.Logic
             PropertyInfo property = typeof(GameState).GetProperty("GameOutcome");
             property.SetValue(gameController.State, GameState.Outcome.Tie);
         }
-
-        public void RespawnPlayers(bool invincibleForABit)
-        {
-            foreach (Player player in gameController.Players)
-            {
-                player.Respawn(gameController.PlayerSpawnPosition);
-                if (invincibleForABit)
-                    player.SetInvincibleForDuration(SingletonBehaviour<GameConstants>.Instance.PlayerInvincibilityDuration);
-            }
-        }
     }
 }

@@ -100,6 +100,19 @@ namespace DavigeditPlus.Logic
             return reverseOutcome;
         }
 
+        public void RespawnPlayers(bool invincibleForABit)
+        {
+            for (int i = 0; i < players.Count; i++)
+            {
+                if (allowedPlayers[i])
+                {
+                    players[i].Respawn(SingletonBehaviour<GameController>.Instance.PlayerSpawnPosition);
+                    if (invincibleForABit)
+                        players[i].SetInvincibleForDuration(SingletonBehaviour<GameConstants>.Instance.PlayerInvincibilityDuration);
+                }
+            }
+        }
+
         void OnValidate()
         {
             if (allowedPlayers.Length != 4)
