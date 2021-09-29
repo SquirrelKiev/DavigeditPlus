@@ -36,11 +36,9 @@ namespace DavigeditPlus
                 switch (damageableType)
                 {
                     case DamageableType.Warrior:
-                        // Bandaid fix
-                        if (other.gameObject.name == "Player") return;
                         // so we get all the dummy rigidbodies
-                        Transform[] transforms = other.gameObject.transform.parent.GetComponentsInChildren<Transform>();
-                        foreach (Transform item in transforms)
+                        Collider[] colliders = other.gameObject.transform.root.GetComponentsInChildren<Collider>();
+                        foreach (Collider item in colliders)
                         {
                             notAllowedObjects.Add(item.gameObject);
                             StartCoroutine(FixedLogic.InvokeFixed(timeBetweenDamage, new Action(() => { if (item != null) notAllowedObjects.Remove(item.gameObject); })));
