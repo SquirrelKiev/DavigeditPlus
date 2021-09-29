@@ -73,8 +73,7 @@ namespace DavigeditPlus
 
                         break;
                     case DamageableType.Warrior:
-                        other.gameObject.transform.root.GetComponentInChildren<PlayerHealth>().TakeDamage(damageToDeal * GameController.Instance.GameOptions.WarriorOutOfBoundsDamage, true);
-                        MelonLoader.MelonLogger.Msg("Damaged!");
+                        other.gameObject.transform.root.GetComponentInChildren<PlayerHealth>().TakeDamage(1f / GameController.Instance.GameOptions.WarriorHealth, true);
                         onHurt.Invoke();
 
                         break;
