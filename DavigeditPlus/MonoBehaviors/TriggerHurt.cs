@@ -36,8 +36,11 @@ namespace DavigeditPlus
                 switch (damageableType)
                 {
                     case DamageableType.Warrior:
+                        // Bandaid fix
+                        if (other.gameObject.name == "Player") return;
                         // so we get all the dummy rigidbodies
-                        foreach (Transform item in other.gameObject.transform.parent.GetComponentsInChildren<Transform>())
+                        Transform[] transforms = other.gameObject.transform.parent.GetComponentsInChildren<Transform>();
+                        foreach (Transform item in transforms)
                         {
                             notAllowedObjects.Add(item.gameObject);
                             StartCoroutine(FixedLogic.InvokeFixed(timeBetweenDamage, new Action(() => { if (item != null) notAllowedObjects.Remove(item.gameObject); })));
@@ -72,7 +75,7 @@ namespace DavigeditPlus
 
                         break;
                     case DamageableType.Warrior:
-                        other.gameObject.transform.root.GetComponentInChildren<PlayerHealth>().TakeDamage(damageToDeal * SingletonBehaviour<GameController>.Instance.GameOptions.WarriorOutOfBoundsDamage, true);
+                        other.gameObject.transform.root.GetComponentInChildren<PlayerHealth>().TakeDamage(damageToDeal * GameController.Instance.GameOptions.WarriorOutOfBoundsDamage, true);
                         MelonLoader.MelonLogger.Msg("Damaged!");
                         onHurt.Invoke();
 
