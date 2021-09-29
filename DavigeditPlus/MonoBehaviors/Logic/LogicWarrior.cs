@@ -55,7 +55,7 @@ namespace DavigeditPlus.Logic
                 if(allowedPlayers[i])
                 {
                     Player player = players[i];
-                    player.ResetPosition(location.transform.position);
+                    player.transform.position = location.transform.position;
                 }
             }
         }
