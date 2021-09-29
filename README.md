@@ -3,7 +3,7 @@
  
  Inspired by Valve's Source Engine
 
-[unity package here](https://github.com/SquirrelKiev/DavigeditPlus/blob/main/DavigeditPlus-rc-1.unitypackage)
+[unity package here](https://github.com/SquirrelKiev/DavigeditPlus/raw/main/DavigeditPlus.unitypackage)
 
 [current test release here](https://github.com/SquirrelKiev/DavigeditPlus/releases/download/v1.0.0-rc1/DavigeditPlus.dll)
 
