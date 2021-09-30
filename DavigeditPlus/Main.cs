@@ -1,6 +1,7 @@
 ﻿using Davigo.Davigedit;
 using MelonLoader;
 using System;
+using System.Reflection;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -11,7 +12,6 @@ namespace DavigeditPlus
     public class Main : MelonMod
     {
         private bool firstLoad = true;
-        private string quickLoadPath;
 
         public override void OnApplicationStart()
         {
@@ -23,7 +23,7 @@ namespace DavigeditPlus
         {
             if (SceneManager.GetActiveScene().name == AppConstants.Instance.MenuScene && firstLoad)
             {
-                quickLoadPath = Path.Combine(Environment.CurrentDirectory, "QuickLoad.txt");
+                string quickLoadPath = Path.Combine(Environment.CurrentDirectory, "QuickLoad.txt");
                 firstLoad = false;
                 if (File.Exists(quickLoadPath))
                 {
@@ -45,7 +45,9 @@ namespace DavigeditPlus
                     List<DeviceList> warriorInputDevices = null;
 
                     MelonLogger.Msg("aight");
-                    MatchLoader.Instance.LoadMap(mapID, new GameMode(), new GameOptions(), 1, true, false, warriorInputDevices);
+
+                    GameOptions gameOptions = ((GameOptionsData[])typeof(RulesMenu).GetField("warriorCountPresets", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(GameObject.FindObjectOfType<RulesMenu>()))[0].GameOptions;
+                    MatchLoader.Instance.LoadMap(mapID, new GameMode(), gameOptions, 1, true, false, warriorInputDevices);
                 }
             }
         }
