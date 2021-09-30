@@ -21,6 +21,13 @@ namespace DavigeditPlus
         private bool canTriggerEnter = true;
         private bool canTriggerExit = true;
 
+        // bandaid fix for canTriggerEnter and exit not enabling when toggled off and on after being touched
+        private void OnEnable()
+        {
+            canTriggerEnter = true;
+            canTriggerExit = true;
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (canTriggerEnter == true)
@@ -32,7 +39,7 @@ namespace DavigeditPlus
                 if (delayBeforeReset > 0)
                 {
                     canTriggerEnter = false;
-                    StartCoroutine(FixedLogic.InvokeFixed(delayBeforeReset, new System.Action(SetCanTriggerEnter)));
+                    StartCoroutine(FixedLogic.InvokeFixed(delayBeforeReset, new System.Action(() => { canTriggerEnter = true; })));
                 }
             }
         }
@@ -45,13 +52,8 @@ namespace DavigeditPlus
                     return;
                 onTriggerExit.Invoke();
                 canTriggerExit = false;
-                StartCoroutine(FixedLogic.InvokeFixed(delayBeforeReset, new System.Action(SetCanTriggerExit)));
+                StartCoroutine(FixedLogic.InvokeFixed(delayBeforeReset, new System.Action(() => { canTriggerExit = true; })));
             }
         }
-
-        private void SetCanTriggerEnter()
-        { canTriggerEnter = true; }
-        private void SetCanTriggerExit()
-        { canTriggerExit = true; }
     }
 }

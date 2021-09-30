@@ -22,6 +22,11 @@ namespace DavigeditPlus
 
         private List<GameObject> notAllowedObjects = new List<GameObject>();
 
+        private void OnEnable()
+        {
+            notAllowedObjects.Clear();
+        }
+
         private void OnTriggerStay(Collider other)
         {
             if (!notAllowedObjects.Contains(other.gameObject))
