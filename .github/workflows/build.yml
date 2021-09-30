@@ -1,0 +1,40 @@
+name: Build DavigeditPlus
+
+# When the action will run
+on:
+  push:
+    branches: [master]
+  # can trigger manually
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    # checkout current repo
+    - uses: actions/checkout@v2
+    
+    # checkout secret repo with build stuff ooo
+    - uses: actions/checkout@v2
+      with:
+        repository: SquirrelKiev/super-secret-davigo-files
+        token: ${{ secrets.PAT_TOKEN }}
+        path: libs
+    
+    - name: Setup msbuild
+      uses: microsoft/setup-msbuild@v1
+      
+    - name: Fix references
+      uses: bluwy/substitute-string-action@v1
+      with:
+        _input-file: DavigeditPlus/DavigeditPlus.csproj
+        _output_file: DavigeditPlus/DavigeditPlus.csproj
+        $(localappdata)\DiscordGames\Davigo Alpha - 828491273227993130\content\Davigo_Data\Managed\: libs\
+        $(localappdata)\DiscordGames\Davigo Alpha - 828491273227993130\content\MelonLoader\: libs\
+    
+    - run: msbuild DavigeditPlus.sln -p:platform="Any CPU" -p:Configuration=Release
+    - uses: actions/upload-artifact@v2
+      with: 
+        name: DavigeditPlus
+        path: DavigeditPlus/bin/Release/DavigedutPlus.dll
