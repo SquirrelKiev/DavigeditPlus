@@ -65,6 +65,10 @@
       <HintPath>$(localappdata)\DiscordGames\Davigo Alpha - 828491273227993130\content\Davigo_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(localappdata)\DiscordGames\Davigo Alpha - 828491273227993130\content\Davigo_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MonoBehaviors\Logic\Case.cs" />

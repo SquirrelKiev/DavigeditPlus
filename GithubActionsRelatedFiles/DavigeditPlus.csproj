@@ -65,6 +65,10 @@
       <HintPath>libs\UnityEngine.PhysicsModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+	<Reference Include="UnityEngine.UI">
+      <HintPath>libs\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MonoBehaviors\Logic\Case.cs" />

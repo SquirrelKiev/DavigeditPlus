@@ -96,9 +96,21 @@ namespace DavigeditPlus.Logic
             onValueChanged.Invoke();
         }
 
-        public void SetTextToCounter(TextMeshPro text)
+        public void SetTextToCounter(GameObject objectWithText)
         {
-            text.text = currentValue.ToString();
+            TextMeshPro worldSpaceText = objectWithText.GetComponent<TextMeshPro>();
+            if (worldSpaceText != null)
+                worldSpaceText.text = currentValue.ToString();
+            else
+            {
+                TextMeshProUGUI uiSpaceText = objectWithText.GetComponent<TextMeshProUGUI>();
+                if (uiSpaceText != null)
+                    uiSpaceText.text = currentValue.ToString();
+                else
+                {
+                    MelonLoader.MelonLogger.Warning($"hey buddy you called a method that sets textmeshpro text on a game object and your game object doesnt have textmeshpro text on it. called from {gameObject.name}");
+                }
+            }
         }
 
         private void ValidateValue()

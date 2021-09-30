@@ -52,16 +52,40 @@ namespace DavigeditPlus.Logic
             timer = StartCoroutine(IETimer());
         }
 
-        public void SetTextToTimer_CountUp(TextMeshPro text)
+        public void SetTextToTimer_CountUp(GameObject objectWithText)
         {
             TimeSpan timeSpan = TimeSpan.FromSeconds(currentTimer);
-            text.text = timeSpan.ToString(@"mm\:ss\:ff");
+            TextMeshPro worldSpaceText = objectWithText.GetComponent<TextMeshPro>();
+            if (worldSpaceText != null)
+                worldSpaceText.text = timeSpan.ToString(@"mm\:ss\:ff");
+            else
+            {
+                TextMeshProUGUI uiSpaceText = objectWithText.GetComponent<TextMeshProUGUI>();
+                if (uiSpaceText != null)
+                    uiSpaceText.text = timeSpan.ToString(@"mm\:ss\:ff");
+                else
+                {
+                    MelonLoader.MelonLogger.Warning($"hey buddy you called a method that sets textmeshpro text on a game object and your game object doesnt have textmeshpro text on it. called from {gameObject.name}");
+                }
+            }
         }
 
-        public void SetTextToTimer_CountDown(TextMeshPro text)
+        public void SetTextToTimer_CountDown(GameObject objectWithText)
         {
             TimeSpan timeSpan = TimeSpan.FromSeconds(timerInterval - currentTimer);
-            text.text = timeSpan.ToString(@"mm\:ss\:ff");
+            TextMeshPro worldSpaceText = objectWithText.GetComponent<TextMeshPro>();
+            if (worldSpaceText != null)
+                worldSpaceText.text = timeSpan.ToString(@"mm\:ss\:ff");
+            else
+            {
+                TextMeshProUGUI uiSpaceText = objectWithText.GetComponent<TextMeshProUGUI>();
+                if (uiSpaceText != null)
+                    uiSpaceText.text = timeSpan.ToString(@"mm\:ss\:ff");
+                else
+                {
+                    MelonLoader.MelonLogger.Warning($"hey buddy you called a method that sets textmeshpro text on a game object and your game object doesnt have textmeshpro text on it. called from {gameObject.name}");
+                }
+            }
         }
 
         private IEnumerator IETimer()
