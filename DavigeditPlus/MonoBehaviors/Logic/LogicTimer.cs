@@ -46,7 +46,8 @@ namespace DavigeditPlus.Logic
 
         public void ResetTimer()
         {
-            StopCoroutine(timer);
+            if(timer != null)
+                StopCoroutine(timer);
             currentTimer = 0;
             timer = StartCoroutine(IETimer());
         }
