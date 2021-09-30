@@ -92,8 +92,4 @@
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>echo F | xcopy /I /F /Y "$(localappdata)\DiscordGames\Davigo Alpha - 828491273227993130\content\Mods\DavigeditPlus.dll" "C:\Users\Ethan Ginns-Farrow\Documents\Davigo\DavigeditPlus\Davigolf\Assets\DavigeditPlus\Scripts\DavigeditPlus.dll"
-echo F | xcopy /I /F /Y "$(localappdata)\DiscordGames\Davigo Alpha - 828491273227993130\content\Mods\DavigeditPlus.dll" "C:\Users\Ethan Ginns-Farrow\Documents\Davigo\DavigeditPlus\CookingGameTest\CookingGameTest\Assets\DavigeditPlus\Scripts\DavigeditPlus.dll"</PostBuildEvent>
-  </PropertyGroup>
 </Project>
