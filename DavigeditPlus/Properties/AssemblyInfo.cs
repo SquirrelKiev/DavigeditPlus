@@ -6,7 +6,7 @@ using MelonLoader;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: MelonInfo(typeof(DavigeditPlus.Main), "Davigedit+", "1.0.0-rc2", "SquirrelKiev")]
+[assembly: MelonInfo(typeof(DavigeditPlus.Main), "Davigedit+", "1.0.0-rc3", "SquirrelKiev")]
 [assembly: MelonGame("Davico", "Davigo")]
 [assembly: MelonColor(System.ConsoleColor.DarkYellow)]
 [assembly: VerifyLoaderVersion(0, 4, 3, true)]
