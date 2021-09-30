@@ -22,7 +22,7 @@ jobs:
       with:
         repository: SquirrelKiev/super-secret-davigo-files
         token: ${{ secrets.PAT_TOKEN }}
-        path: libs
+        path: DavigeditPlus\libs
     
     - name: Setup msbuild
       uses: microsoft/setup-msbuild@v1
