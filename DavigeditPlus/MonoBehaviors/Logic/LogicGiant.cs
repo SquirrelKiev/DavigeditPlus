@@ -43,8 +43,9 @@ namespace DavigeditPlus.Logic
         public void TeleportGiant(GameObject location)
         {
             FieldInfo startPos = typeof(SetStartPosition).GetField("startPosition", BindingFlags.NonPublic | BindingFlags.Instance);
+            Transform originalStartPos = (Transform)startPos.GetValue(FindObjectOfType<SetStartPosition>());
             startPos.SetValue(FindObjectOfType<SetStartPosition>(), location.transform);
-            FindObjectOfType<SetStartPosition>().Set();
+            FindObjectOfType<SetStartPosition>().Set(location.transform.position, (giant.transform.rotation * Quaternion.Inverse(originalStartPos.rotation)) * location.transform.rotation);
         }
 
         public void RespawnGiant()
