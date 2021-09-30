@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4182D396-D45B-4B20-BBDF-A7370EE66260}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DavigeditPlus</RootNamespace>
+    <AssemblyName>DavigeditPlus</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>$(localappdata)\DiscordGames\Davigo Alpha - 828491273227993130\content\Mods\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0649</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>libs\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MelonLoader">
+      <HintPath>libs\MelonLoader.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>libs\Unity.TextMeshPro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>libs\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>libs\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>libs\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MonoBehaviors\Logic\Case.cs" />
+    <Compile Include="MonoBehaviors\Breakable.cs" />
+    <Compile Include="MonoBehaviors\CannonSettings.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="MonoBehaviors\Filter\Filter.cs" />
+    <Compile Include="MonoBehaviors\Filter\FilterByComponent.cs" />
+    <Compile Include="MonoBehaviors\InstantiateObject.cs" />
+    <Compile Include="MonoBehaviors\Logic\LogicAuto.cs" />
+    <Compile Include="MonoBehaviors\Logic\LogicGiant.cs" />
+    <Compile Include="MonoBehaviors\Filter\FilterByObjectName.cs" />
+    <Compile Include="MonoBehaviors\Logic\LogicWarrior.cs" />
+    <Compile Include="MonoBehaviors\Filter\FilterCombine.cs" />
+    <Compile Include="MonoBehaviors\Logic\LogicGame.cs" />
+    <Compile Include="MonoBehaviors\Logic\LogicCounter.cs" />
+    <Compile Include="MonoBehaviors\Logic\LogicRelay.cs" />
+    <Compile Include="MonoBehaviors\Logic\LogicTimer.cs" />
+    <Compile Include="MonoBehaviors\RocketSpawnerObject.cs" />
+    <Compile Include="MonoBehaviors\RocketSpawnerSettings.cs" />
+    <Compile Include="MonoBehaviors\TriggerHurt.cs" />
+    <Compile Include="PatchClass.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MonoBehaviors\Trigger.cs" />
+    <Compile Include="Utility.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>echo F | xcopy /I /F /Y "$(localappdata)\DiscordGames\Davigo Alpha - 828491273227993130\content\Mods\DavigeditPlus.dll" "C:\Users\Ethan Ginns-Farrow\Documents\Davigo\DavigeditPlus\Davigolf\Assets\DavigeditPlus\Scripts\DavigeditPlus.dll"
+echo F | xcopy /I /F /Y "$(localappdata)\DiscordGames\Davigo Alpha - 828491273227993130\content\Mods\DavigeditPlus.dll" "C:\Users\Ethan Ginns-Farrow\Documents\Davigo\DavigeditPlus\CookingGameTest\CookingGameTest\Assets\DavigeditPlus\Scripts\DavigeditPlus.dll"</PostBuildEvent>
+  </PropertyGroup>
+</Project>
