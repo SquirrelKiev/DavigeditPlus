@@ -28,7 +28,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1
       
     - name: Fix references
-      run: echo F | xcopy /I /F /Y ".github\workflows\DavigeditPlus.sln" "DavigeditPlus\DavigeditPlus.sln"
+      run: echo F | xcopy /I /F /Y "GithubActionsRelatedFiles\DavigeditPlus.csproj" "DavigeditPlus\DavigeditPlus.csproj"
     
     - run: msbuild DavigeditPlus.sln -p:platform="Any CPU" -p:Configuration=Release
     
