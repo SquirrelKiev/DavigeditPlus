@@ -1,14 +1,17 @@
 # DavigeditPlus
- more control in the map maker for Davigo (**alpha only!!!**)
+ more control in the map maker for funny giant game (**alpha only!!!**)
  
  Inspired by Valve's Source Engine
 
-[unity package here](https://github.com/SquirrelKiev/DavigeditPlus/raw/main/DavigeditPlus.unitypackage)
-
-[current test release here](https://github.com/SquirrelKiev/DavigeditPlus/releases/latest/download/davigeditplus.dll)
-
 ## davigo install instructions
-install [melonloader 0.4.3](https://github.com/HerpDerpinstine/MelonLoader/releases/latest/download/MelonLoader.Installer.exe) into your davigo alpha folder (`%localappdata%\DiscordGames\Davigo Alpha - 828491273227993130\content\`), copy the [current release](https://github.com/SquirrelKiev/DavigeditPlus/releases/latest/download/davigeditplus.dll) into the mods folder, go nuts
-## davigedit install instructions
-import the standard davigedit package, then import the [davigedit++ package](https://github.com/SquirrelKiev/DavigeditPlus/blob/main/DavigeditPlus.unitypackage). 
+1. Install [MelonLoader 0.4.3](https://github.com/HerpDerpinstine/MelonLoader/releases/latest/download/MelonLoader.Installer.exe) into your Davigo Alpha folder (default location is `%localappdata%\DiscordGames\Davigo Alpha - 828491273227993130\content\`)
+2. Go [here](https://github.com/SquirrelKiev/DavigeditPlus/actions/workflows/build.yml), click on the latest build, and download the latest artifact.
+3. Extract DavigeditPlus.dll into the Mods folder, which is in your davigo alpha folder.
+4. Go nuts. 
+## Davigedit+ install instructions
+1. Import the standard davigedit package
+2. Import the [davigedit++ package](https://github.com/SquirrelKiev/DavigeditPlus/blob/main/DavigeditPlus.unitypackage). 
+3. Make cool maps
+4. Post map updates in the Discord 😉
+
 [docs here](https://github.com/SquirrelKiev/DavigeditPlus/wiki)
