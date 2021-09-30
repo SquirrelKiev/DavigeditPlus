@@ -13,10 +13,12 @@ jobs:
     
     steps:
     # checkout current repo
-    - uses: actions/checkout@v2
+    - name: Checkout DavigeditPlus
+      uses: actions/checkout@v2
     
     # checkout secret repo with build stuff ooo
-    - uses: actions/checkout@v2
+    - name: Checkout required DLLs
+      uses: actions/checkout@v2
       with:
         repository: SquirrelKiev/super-secret-davigo-files
         token: ${{ secrets.PAT_TOKEN }}
@@ -26,20 +28,16 @@ jobs:
       uses: microsoft/setup-msbuild@v1
       
     - name: Fix references to davigo DLLs
-      uses: jacobtomlinson/gha-find-replace@0.1.4
-      with:
-        find: "$(localappdata)\\DiscordGames\\Davigo Alpha - 828491273227993130\\content\\Davigo_Data\\Managed\\"
-        replace: "libs\\"
+      run: powershell -Command "(gc DavigeditPlus\\DavigeditPlus.csproj) -replace '$(localappdata)\\DiscordGames\\Davigo Alpha - 828491273227993130\\content\\Davigo_Data\\Managed\\', 'libs\\' | Out-File DavigeditPlus\\DavigeditPlus.csproj"
         
     - name: Fix references to melon DLLs
-      uses: jacobtomlinson/gha-find-replace@0.1.4
-      with:
-        find: "$(localappdata)\\DiscordGames\\Davigo Alpha - 828491273227993130\\content\\MelonLoader\\"
-        replace: "libs\\"
+      run: powershell -Command "(gc DavigeditPlus\\DavigeditPlus.csproj) -replace '$(localappdata)\\DiscordGames\\Davigo Alpha - 828491273227993130\\content\\MelonLoader\\', 'libs\\' | Out-File DavigeditPlus\\DavigeditPlus.csproj"
 
     
     - run: msbuild DavigeditPlus.sln -p:platform="Any CPU" -p:Configuration=Release
-    - uses: actions/upload-artifact@v2
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
       with: 
         name: DavigeditPlus
         path: DavigeditPlus/bin/Release/DavigedutPlus.dll
