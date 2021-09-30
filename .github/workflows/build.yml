@@ -27,12 +27,8 @@ jobs:
     - name: Setup msbuild
       uses: microsoft/setup-msbuild@v1
       
-    - name: Fix references to davigo DLLs
-      run: powershell -Command "(gc DavigeditPlus\\DavigeditPlus.csproj) -replace '$(localappdata)\\DiscordGames\\Davigo Alpha - 828491273227993130\\content\\Davigo_Data\\Managed\\', 'libs\\' | Out-File DavigeditPlus\\DavigeditPlus.csproj"
-        
-    - name: Fix references to melon DLLs
-      run: powershell -Command "(gc DavigeditPlus\\DavigeditPlus.csproj) -replace '$(localappdata)\\DiscordGames\\Davigo Alpha - 828491273227993130\\content\\MelonLoader\\', 'libs\\' | Out-File DavigeditPlus\\DavigeditPlus.csproj"
-
+    - name: Fix references
+      run: xcopy /I /F /Y ".github/workflows/DavigeditPlus.sln" "DavigeditPlus/DavigeditPlus.sln"
     
     - run: msbuild DavigeditPlus.sln -p:platform="Any CPU" -p:Configuration=Release
     
