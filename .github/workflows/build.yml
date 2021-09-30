@@ -29,7 +29,7 @@ jobs:
       uses: bluwy/substitute-string-action@v1
       with:
         _input-file: DavigeditPlus/DavigeditPlus.csproj
-        _output_file: DavigeditPlus/DavigeditPlus.csproj
+        _output-file: DavigeditPlus/DavigeditPlus.csproj
         $(localappdata)\DiscordGames\Davigo Alpha - 828491273227993130\content\Davigo_Data\Managed\: libs\
         $(localappdata)\DiscordGames\Davigo Alpha - 828491273227993130\content\MelonLoader\: libs\
     
