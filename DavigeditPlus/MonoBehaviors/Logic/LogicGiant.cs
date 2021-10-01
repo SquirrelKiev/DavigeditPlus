@@ -39,13 +39,14 @@ namespace DavigeditPlus.Logic
             giant.OnRespawn += onRespawn.Invoke;
         }
 
-        // Would have a Vector3 one too but UnityEvent doesnt like it
         public void TeleportGiant(GameObject location)
         {
             FieldInfo startPos = typeof(SetStartPosition).GetField("startPosition", BindingFlags.NonPublic | BindingFlags.Instance);
             Transform originalStartPos = (Transform)startPos.GetValue(FindObjectOfType<SetStartPosition>());
             startPos.SetValue(FindObjectOfType<SetStartPosition>(), location.transform);
-            FindObjectOfType<SetStartPosition>().Set(location.transform.position, (giant.transform.rotation * Quaternion.Inverse(originalStartPos.rotation)) * location.transform.rotation);
+
+            Quaternion newGiantRot = Quaternion.Euler(Vector3.Scale(Vector3.up, giant.transform.GetChild(0).transform.rotation.eulerAngles));
+            FindObjectOfType<SetStartPosition>().Set(location.transform.position, newGiantRot * Quaternion.Inverse(originalStartPos.rotation) * location.transform.rotation);
         }
 
         public void RespawnGiant()
