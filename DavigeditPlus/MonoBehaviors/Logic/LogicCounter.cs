@@ -113,6 +113,11 @@ namespace DavigeditPlus.Logic
             }
         }
 
+        public void RandomValue()
+        {
+            currentValue = UnityEngine.Random.Range(min,max);
+        }
+
         private void ValidateValue()
         {
             if(currentValue < min)
