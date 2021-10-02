@@ -12,32 +12,41 @@ namespace DavigeditPlus.Filter
 
         [Header("Subfilters to test")]
         [SerializeField]
-        private Filter filter1;
-        [SerializeField]
-        private Filter filter2;
+        private Filter[] filters;
 
 
         public override bool CheckFilter(GameObject filterObject)
         {
-            // was originally using arrays of filters but that was less readable and didnt work iirc
             if (filterOperation == FilterOperation.AND)
             {
-                if (filter1.CheckFilter(filterObject) && filter2.CheckFilter(filterObject))
+                foreach (Filter filter in filters)
                 {
-                    onPass.Invoke();
-                    return !reverseOutcome;
+                    if (filter.CheckFilter(filterObject) == false)
+                    {
+                        onFail.Invoke();
+                        return reverseOutcome;
+                    }
                 }
+                onPass.Invoke();
+                return !reverseOutcome;
             }
             else if (filterOperation == FilterOperation.OR)
             {
-                if (filter1.CheckFilter(filterObject) || filter2.CheckFilter(filterObject))
+                foreach (Filter filter in filters)
                 {
-                    onPass.Invoke();
-                    return !reverseOutcome;
+                    if (filter.CheckFilter(filterObject))
+                    {
+                        onPass.Invoke();
+                        return !reverseOutcome;
+                    }
                 }
+                onFail.Invoke();
+                return reverseOutcome;
             }
-            onFail.Invoke();
-            return reverseOutcome;
+            else
+            {
+                return reverseOutcome;
+            }
         }
     }
 
